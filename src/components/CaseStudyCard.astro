@@ -107,13 +107,13 @@ const { study } = Astro.props;
   }
 
   .case-facts {
-    max-width: 52rem;
+    width: 100%;
   }
 
   .case-facts section {
     display: grid;
-    grid-template-columns: minmax(6rem, 0.24fr) minmax(0, 1fr);
-    gap: clamp(1rem, 4vw, 3.5rem);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
     align-items: start;
     padding-block: 0.8rem;
   }
@@ -161,11 +161,6 @@ const { study } = Astro.props;
     summary {
       min-height: 4.5rem;
       gap: 1rem;
-    }
-
-    .case-facts section {
-      grid-template-columns: 1fr;
-      gap: 0.35rem;
     }
   }
 </style>
