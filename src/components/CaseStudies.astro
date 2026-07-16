@@ -28,6 +28,28 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
 </section>
 
 <script>
+  const stabilizeCaseStudyAccordions = (): void => {
+    const detailsElements = document.querySelectorAll<HTMLDetailsElement>(
+      '[data-case-study] details',
+    );
+
+    detailsElements.forEach((details) => {
+      const summary = details.querySelector('summary');
+      if (!summary) return;
+
+      summary.addEventListener('click', () => {
+        if (details.open) return;
+
+        const scrollLeft = window.scrollX;
+        const scrollTop = window.scrollY;
+
+        window.requestAnimationFrame(() => {
+          window.scrollTo(scrollLeft, scrollTop);
+        });
+      });
+    });
+  };
+
   const revealCaseStudy = (): void => {
     const hash = window.location.hash;
     if (!hash) return;
@@ -39,6 +61,7 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
     if (details instanceof HTMLDetailsElement) details.open = true;
   };
 
+  stabilizeCaseStudyAccordions();
   revealCaseStudy();
   window.addEventListener('hashchange', revealCaseStudy);
 </script>
@@ -57,5 +80,6 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
     display: grid;
     gap: 0.65rem;
     margin-top: clamp(3rem, 6vw, 5rem);
+    overflow-anchor: none;
   }
 </style>

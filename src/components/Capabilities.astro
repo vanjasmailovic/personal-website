@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../config/site';
+
 const groups = [
   {
     title: 'AI product systems',
@@ -68,6 +70,15 @@ const groups = [
     </div>
 
     <div class="skills-documents" aria-label="Professional documents">
+      <a
+        class="button-link secondary"
+        href={siteConfig.linkedIn}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View LinkedIn Profile <span aria-hidden="true">↗</span>
+        <span class="sr-only">(opens in a new tab)</span>
+      </a>
       <a
         class="button-link secondary"
         href="/documents/vanja-smailovic-cv.pdf"

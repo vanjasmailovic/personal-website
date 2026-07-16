@@ -29,17 +29,19 @@ import { siteConfig } from '../config/site';
           <dt>Location</dt>
           <dd>{siteConfig.location}</dd>
         </div>
-        <div>
-          <dt>LinkedIn</dt>
-          <dd>
-            <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer">
-              View LinkedIn profile <span class="sr-only">(opens in a new tab)</span>
-            </a>
-          </dd>
-        </div>
       </dl>
 
       <div class="document-links" aria-label="Professional documents">
+        <a
+          class="document-link"
+          href={siteConfig.linkedIn}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>View LinkedIn Profile</span>
+          <small>Profile · opens in a new tab</small>
+          <span aria-hidden="true">↗</span>
+        </a>
         <a
           class="document-link"
           href="/documents/vanja-smailovic-cv.pdf"
