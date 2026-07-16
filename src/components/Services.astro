@@ -55,7 +55,9 @@ const services = [
       {
         services.map((service, index) => (
           <article class="service-card">
-            <span class="item-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <span class="item-number" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
             <ul aria-label={`${service.title} capabilities`}>

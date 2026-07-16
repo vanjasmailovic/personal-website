@@ -56,7 +56,9 @@ const groups = [
       {
         groups.map((group, index) => (
           <section aria-labelledby={`capability-${index}`}>
-            <span class="item-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <span class="item-number" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
             <h3 id={`capability-${index}`}>{group.title}</h3>
             <ul>
               {group.items.map((item) => (
