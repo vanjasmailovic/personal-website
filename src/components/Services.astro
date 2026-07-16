@@ -43,9 +43,11 @@ const services = [
     <div class="section-heading-grid">
       <h2 class="section-title" id="services-title">Services</h2>
       <p class="section-intro">
-        From unclear opportunity to useful product. I work with product and engineering teams where
-        AI needs to move beyond a demo — into a system that is grounded, evaluated, maintainable and
-        valuable to the people using it.
+        From unclear opportunity to useful product. I work with product and engineering teams where{
+          ' '
+        }
+        <span class="text-accent">AI needs to move beyond a demo</span>{' '}— into a system that is
+        grounded, evaluated, maintainable and valuable to the people using it.
       </p>
     </div>
 
@@ -71,7 +73,7 @@ const services = [
   .section-heading-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
-    align-items: end;
+    align-items: start;
     gap: 3rem;
   }
 

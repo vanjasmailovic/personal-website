@@ -18,7 +18,7 @@ import { siteConfig } from '../config/site';
         hands-on technical leadership, email is the simplest place to start.
       </p>
       <a class="contact-email" href={`mailto:${siteConfig.email}`}>
-        {siteConfig.email}
+        <span class="text-accent">{siteConfig.email}</span>
         <span aria-hidden="true">↗</span>
       </a>
     </div>
@@ -31,7 +31,7 @@ import { siteConfig } from '../config/site';
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span>View LinkedIn Profile</span>
+          <span>View{' '}<span class="text-accent">LinkedIn Profile</span></span>
           <small>Profile · opens in a new tab</small>
           <span aria-hidden="true">↗</span>
         </a>
@@ -41,7 +41,7 @@ import { siteConfig } from '../config/site';
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span>View CV</span>
+          <span>View{' '}<span class="text-accent">CV</span></span>
           <small>PDF · opens in a new tab</small>
           <span aria-hidden="true">↗</span>
         </a>
@@ -51,7 +51,7 @@ import { siteConfig } from '../config/site';
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span>View Portfolio</span>
+          <span>View{' '}<span class="text-accent">Portfolio</span></span>
           <small>PDF · opens in a new tab</small>
           <span aria-hidden="true">↗</span>
         </a>
