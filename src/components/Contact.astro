@@ -24,13 +24,6 @@ import { siteConfig } from '../config/site';
     </div>
 
     <div class="contact-details">
-      <dl>
-        <div>
-          <dt>Location</dt>
-          <dd>{siteConfig.location}</dd>
-        </div>
-      </dl>
-
       <div class="document-links" aria-label="Professional documents">
         <a
           class="document-link"
@@ -104,37 +97,6 @@ import { siteConfig } from '../config/site';
     text-underline-offset: 0.35rem;
   }
 
-  dl {
-    padding: 0;
-    margin: 0;
-    border-top: 1px solid rgb(7 9 12 / 28%);
-  }
-
-  dl > div {
-    display: grid;
-    grid-template-columns: 7rem minmax(0, 1fr);
-    gap: 1rem;
-    padding-block: 1.2rem;
-    border-bottom: 1px solid rgb(7 9 12 / 28%);
-  }
-
-  dt {
-    font-family: var(--font-mono);
-    font-size: 0.67rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  dd {
-    margin: 0;
-    color: #173f33;
-  }
-
-  dd a {
-    text-underline-offset: 0.25rem;
-  }
-
   .document-links {
     display: grid;
     gap: 0.75rem;
@@ -189,9 +151,5 @@ import { siteConfig } from '../config/site';
       font-size: 0.95rem;
     }
 
-    dl > div {
-      grid-template-columns: 1fr;
-      gap: 0.35rem;
-    }
   }
 </style>
