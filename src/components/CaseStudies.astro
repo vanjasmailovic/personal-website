@@ -20,7 +20,7 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
     </div>
 
     <div class="case-study-list">
-      {studies.map((study) => <CaseStudyCard study={study} />)}
+      {studies.map((study, index) => <CaseStudyCard study={study} index={index} />)}
     </div>
   </div>
 </section>

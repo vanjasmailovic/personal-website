@@ -53,8 +53,9 @@ const services = [
 
     <div class="services-grid">
       {
-        services.map((service) => (
+        services.map((service, index) => (
           <article class="service-card">
+            <span class="item-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
             <ul aria-label={`${service.title} capabilities`}>
@@ -92,6 +93,11 @@ const services = [
     min-height: 18rem;
     padding-top: 1.75rem;
     border-top: 1px solid var(--color-line);
+  }
+
+  .item-number {
+    display: block;
+    margin-bottom: 1.5rem;
   }
 
   h3 {

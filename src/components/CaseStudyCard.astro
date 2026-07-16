@@ -3,9 +3,10 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   study: CollectionEntry<'caseStudies'>;
+  index: number;
 }
 
-const { study } = Astro.props;
+const { study, index } = Astro.props;
 
 const outcomeAccents = [
   '2.5 hours saved',
@@ -36,6 +37,9 @@ const outcomeSegments = accentOutcome(study.data.outcome);
 <article class="case-study-card" id={study.data.anchor} data-case-study tabindex="-1">
   <details>
     <summary>
+      <span class="item-number case-number" aria-hidden="true">
+        {String(index + 1).padStart(2, '0')}
+      </span>
       <span class="case-title" role="heading" aria-level="3">{study.data.title}</span>
       <span class="summary-icon" aria-hidden="true"></span>
     </summary>
@@ -87,11 +91,11 @@ const outcomeSegments = accentOutcome(study.data.outcome);
   }
 
   summary {
-    display: flex;
+    display: grid;
     min-height: 6rem;
+    grid-template-columns: clamp(4.5rem, 8vw, 6.5rem) minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
     padding: 1rem 0;
     color: var(--color-paper);
     cursor: pointer;
@@ -111,6 +115,10 @@ const outcomeSegments = accentOutcome(study.data.outcome);
     font-weight: 400;
     letter-spacing: -0.025em;
     line-height: 1.2;
+  }
+
+  .case-number {
+    font-size: clamp(2.75rem, 5.5vw, 4.75rem);
   }
 
   .summary-icon,
@@ -133,12 +141,13 @@ const outcomeSegments = accentOutcome(study.data.outcome);
   }
 
   .case-expanded {
-    padding: 0 0 clamp(5rem, 10vw, 8rem);
+    padding: 0 0 clamp(2rem, 5vw, 2.5rem);
     background: transparent;
   }
 
   .case-facts {
     width: 100%;
+    padding-left: calc(clamp(4.5rem, 8vw, 6.5rem) + clamp(1.25rem, 3vw, 2.5rem));
   }
 
   .case-facts section {
@@ -147,6 +156,10 @@ const outcomeSegments = accentOutcome(study.data.outcome);
     gap: 0.35rem;
     align-items: start;
     padding-block: 0.8rem;
+  }
+
+  .case-facts section:first-child {
+    padding-top: 1.2rem;
   }
 
   .case-outcome h4 {
@@ -193,7 +206,16 @@ const outcomeSegments = accentOutcome(study.data.outcome);
   @media (max-width: 44rem) {
     summary {
       min-height: 4.5rem;
-      gap: 1rem;
+      grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+      gap: 0.75rem;
+    }
+
+    .case-number {
+      font-size: 2.35rem;
+    }
+
+    .case-facts {
+      padding-left: 4.25rem;
     }
   }
 </style>
