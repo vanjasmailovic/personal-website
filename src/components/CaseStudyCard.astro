@@ -6,6 +6,31 @@ interface Props {
 }
 
 const { study } = Astro.props;
+
+const outcomeAccents = [
+  '2.5 hours saved',
+  '24x reduction',
+  'natural-language access',
+  '20 active B2B customers',
+  'more than 5 million credit decisions',
+  'savings of €800k+',
+  'higher-potential opportunities',
+];
+
+const accentOutcome = (outcome: string) => {
+  const accent = outcomeAccents.find((phrase) => outcome.includes(phrase));
+  if (!accent) return [{ text: outcome, accented: false }];
+
+  const accentStart = outcome.indexOf(accent);
+
+  return [
+    { text: outcome.slice(0, accentStart), accented: false },
+    { text: accent, accented: true },
+    { text: outcome.slice(accentStart + accent.length), accented: false },
+  ].filter((segment) => segment.text);
+};
+
+const outcomeSegments = accentOutcome(study.data.outcome);
 ---
 
 <article class="case-study-card" id={study.data.anchor} data-case-study tabindex="-1">
@@ -33,7 +58,13 @@ const { study } = Astro.props;
         </section>
         <section class="case-outcome" aria-labelledby={`${study.data.anchor}-outcome`}>
           <h4 id={`${study.data.anchor}-outcome`}>Outcome</h4>
-          <p>{study.data.outcome}</p>
+          <p>
+            {
+              outcomeSegments.map((segment) => (
+                <span class:list={{ 'outcome-accent': segment.accented }}>{segment.text}</span>
+              ))
+            }
+          </p>
         </section>
       </div>
     </div>
@@ -102,7 +133,7 @@ const { study } = Astro.props;
   }
 
   .case-expanded {
-    padding: 0 0 clamp(2.5rem, 5vw, 4rem);
+    padding: 0 0 clamp(5rem, 10vw, 8rem);
     background: transparent;
   }
 
@@ -136,6 +167,10 @@ const { study } = Astro.props;
   .case-facts p {
     margin: 0;
     color: #c5ced8;
+  }
+
+  .case-facts :global(.outcome-accent) {
+    color: var(--color-accent-strong);
   }
 
   .case-facts ul {

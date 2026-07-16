@@ -31,15 +31,76 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
       '[data-case-study] details',
     );
 
+    const collapseDetails = (details: HTMLDetailsElement, reduceMotion: boolean): void => {
+      if (!details.open) return;
+
+      const content = details.querySelector<HTMLElement>('.case-expanded');
+      if (!content || reduceMotion) {
+        details.open = false;
+        return;
+      }
+
+      content.getAnimations().forEach((animation) => animation.cancel());
+      details.dataset.animating = 'true';
+
+      const animation = content.animate(
+        [
+          { height: `${content.scrollHeight}px`, opacity: 1, overflow: 'hidden' },
+          { height: '0px', opacity: 0, overflow: 'hidden' },
+        ],
+        { duration: 180, easing: 'ease-out' },
+      );
+
+      animation.addEventListener('finish', () => {
+        details.open = false;
+        delete details.dataset.animating;
+      });
+      animation.addEventListener('cancel', () => delete details.dataset.animating);
+    };
+
     detailsElements.forEach((details) => {
       const summary = details.querySelector('summary');
-      if (!summary) return;
+      const content = details.querySelector<HTMLElement>('.case-expanded');
+      if (!summary || !content || details.dataset.accordionReady === 'true') return;
 
-      summary.addEventListener('click', () => {
-        if (details.open) return;
+      details.dataset.accordionReady = 'true';
+
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (details.dataset.animating === 'true') return;
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (details.open) {
+          collapseDetails(details, reduceMotion);
+          return;
+        }
+
+        detailsElements.forEach((otherDetails) => {
+          if (otherDetails !== details) collapseDetails(otherDetails, reduceMotion);
+        });
+
+        if (reduceMotion) {
+          details.open = true;
+          return;
+        }
 
         const scrollLeft = window.scrollX;
         const scrollTop = window.scrollY;
+
+        details.dataset.animating = 'true';
+        details.open = true;
+
+        const animation = content.animate(
+          [
+            { height: '0px', opacity: 0, overflow: 'hidden' },
+            { height: `${content.scrollHeight}px`, opacity: 1, overflow: 'hidden' },
+          ],
+          { duration: 180, easing: 'ease-out' },
+        );
+
+        animation.addEventListener('finish', () => delete details.dataset.animating);
+        animation.addEventListener('cancel', () => delete details.dataset.animating);
 
         window.requestAnimationFrame(() => {
           window.scrollTo(scrollLeft, scrollTop);
@@ -56,7 +117,11 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
     if (!target?.matches('[data-case-study]')) return;
 
     const details = target.querySelector('details');
-    if (details instanceof HTMLDetailsElement) details.open = true;
+    if (!(details instanceof HTMLDetailsElement)) return;
+
+    document.querySelectorAll<HTMLDetailsElement>('[data-case-study] details').forEach((item) => {
+      item.open = item === details;
+    });
   };
 
   stabilizeCaseStudyAccordions();
