@@ -10,7 +10,7 @@ import avatar from '../assets/avatar.jpg';
     </p>
     <h1 id="hero-title">
       <span>AI products that perform.</span>
-      <span class="text-accent">Cut complexity.</span>
+      <span class="text-accent hero-strike">Cut complexity.</span>
       <span>Deliver measurable impact.</span>
     </h1>
     <p class="hero-proof">
@@ -84,6 +84,11 @@ import avatar from '../assets/avatar.jpg';
 
   h1 span + span {
     margin-top: 0.14em;
+  }
+
+  .hero-strike {
+    text-decoration-line: line-through;
+    text-decoration-thickness: 0.07em;
   }
 
   .hero-proof {
