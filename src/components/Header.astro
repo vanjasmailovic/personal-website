@@ -126,8 +126,9 @@ const navItems = [
     z-index: 50;
     top: 0;
     border-bottom: 1px solid color-mix(in srgb, var(--color-line) 78%, transparent);
-    background: color-mix(in srgb, var(--color-ink) 88%, transparent);
-    backdrop-filter: blur(16px);
+    background: color-mix(in srgb, var(--color-ink) 86%, transparent);
+    -webkit-backdrop-filter: blur(18px) saturate(75%);
+    backdrop-filter: blur(18px) saturate(75%);
   }
 
   .header-inner {
@@ -172,14 +173,14 @@ const navItems = [
       background-color 150ms ease;
   }
 
-  nav a:hover,
-  nav a[aria-current='location'] {
+  nav a:hover {
     color: var(--color-paper);
   }
 
   nav a[aria-current='location'] {
+    color: var(--color-accent);
     background: transparent;
-    box-shadow: inset 0 -1px 0 var(--color-muted);
+    box-shadow: inset 0 -1px 0 var(--color-accent);
   }
 
   .mobile-menu {
