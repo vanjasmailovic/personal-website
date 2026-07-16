@@ -48,11 +48,12 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
           { height: `${content.scrollHeight}px`, opacity: 1, overflow: 'hidden' },
           { height: '0px', opacity: 0, overflow: 'hidden' },
         ],
-        { duration: 180, easing: 'ease-out' },
+        { duration: 180, easing: 'ease-out', fill: 'forwards' },
       );
 
       animation.addEventListener('finish', () => {
         details.open = false;
+        animation.cancel();
         delete details.dataset.animating;
       });
       animation.addEventListener('cancel', () => delete details.dataset.animating);
@@ -85,9 +86,6 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
           return;
         }
 
-        const scrollLeft = window.scrollX;
-        const scrollTop = window.scrollY;
-
         details.dataset.animating = 'true';
         details.open = true;
 
@@ -101,10 +99,6 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
 
         animation.addEventListener('finish', () => delete details.dataset.animating);
         animation.addEventListener('cancel', () => delete details.dataset.animating);
-
-        window.requestAnimationFrame(() => {
-          window.scrollTo(scrollLeft, scrollTop);
-        });
       });
     });
   };
