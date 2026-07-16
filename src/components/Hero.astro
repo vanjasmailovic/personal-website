@@ -10,7 +10,7 @@ import avatar from '../assets/avatar.jpg';
     </p>
     <h1 id="hero-title">
       <span>AI products that perform.</span>
-      <span>Cut complexity.</span>
+      <span class="hero-accent">Cut complexity.</span>
       <span>Deliver measurable impact.</span>
     </h1>
     <p class="hero-proof">
@@ -84,6 +84,10 @@ import avatar from '../assets/avatar.jpg';
 
   h1 span + span {
     margin-top: 0.14em;
+  }
+
+  h1 .hero-accent {
+    color: var(--color-accent);
   }
 
   .hero-proof {

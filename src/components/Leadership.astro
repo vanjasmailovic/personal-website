@@ -24,27 +24,30 @@ const leadership = [
 <section class="section-block" aria-labelledby="leadership-title">
   <div class="site-shell leadership-layout">
     <div class="leadership-heading">
-      <p class="section-kicker">Leadership</p>
-      <h2 class="section-title" id="leadership-title">Close to the code. Clear on the outcome.</h2>
-      <p class="section-intro">
-        My role often sits across engineering, product and commercial context: shaping what to
-        build, making the technical choices and helping the team deliver it well.
-      </p>
+      <h2 class="section-title" id="leadership-title">Leadership</h2>
     </div>
 
-    <div class="leadership-columns">
-      {
-        leadership.map((column) => (
-          <article>
-            <h3>{column.title}</h3>
-            <ul>
-              {column.points.map((point) => (
-                <li>{point}</li>
-              ))}
-            </ul>
-          </article>
-        ))
-      }
+    <div class="leadership-content">
+      <p class="section-intro">
+        Close to the code. Clear on the outcome. My role often sits across engineering, product and
+        commercial context: shaping what to build, making the technical choices and helping the team
+        deliver it well.
+      </p>
+
+      <div class="leadership-columns">
+        {
+          leadership.map((column) => (
+            <article>
+              <h3>{column.title}</h3>
+              <ul>
+                {column.points.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
@@ -64,6 +67,10 @@ const leadership = [
 
   .section-title {
     max-width: 12ch;
+  }
+
+  .leadership-content .section-intro {
+    margin: 0 0 clamp(3rem, 6vw, 5rem);
   }
 
   .leadership-columns {

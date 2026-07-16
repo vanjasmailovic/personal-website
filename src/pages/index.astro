@@ -25,9 +25,9 @@ import MainLayout from '../layouts/MainLayout.astro';
     <CaseStudies />
     <div id="details" data-nav-section tabindex="-1">
       <section class="section-block details-intro" aria-labelledby="details-title">
-        <div class="site-shell">
-          <p class="section-kicker">Details</p>
-          <h2 class="section-title" id="details-title">Experience, leadership and background.</h2>
+        <div class="site-shell details-heading">
+          <h2 class="section-title" id="details-title">Details</h2>
+          <p class="section-intro">Experience, leadership and background.</p>
         </div>
       </section>
       <Experience />
@@ -45,7 +45,22 @@ import MainLayout from '../layouts/MainLayout.astro';
     background: var(--color-panel);
   }
 
-  .details-intro .section-title {
-    max-width: 15ch;
+  .details-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+    align-items: end;
+    gap: 3rem;
+  }
+
+  .details-heading .section-intro {
+    margin: 0;
+  }
+
+  @media (max-width: 48rem) {
+    .details-heading {
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 1.75rem;
+    }
   }
 </style>

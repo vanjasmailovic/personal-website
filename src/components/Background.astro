@@ -1,32 +1,33 @@
 <section class="section-block background-section" aria-labelledby="background-title">
   <div class="site-shell background-layout">
-    <div>
-      <p class="section-kicker">Foundation</p>
-      <h2 class="section-title" id="background-title">Research depth with a product bias.</h2>
-    </div>
+    <h2 class="section-title" id="background-title">Foundation</h2>
 
-    <div class="background-grid">
-      <article>
-        <h3>PhD in social network analysis</h3>
-        <p>
-          University of Zagreb, focused on graph algorithms, statistical validation and
-          data-processing methods for measuring user influence.
-        </p>
-      </article>
-      <article>
-        <h3>Eight peer-reviewed papers</h3>
-        <p>
-          Academic work included an article in <em>Complexity</em>, alongside six years combining
-          research engineering with doctoral work.
-        </p>
-      </article>
-      <article>
-        <h3>Recognized for execution and ideas</h3>
-        <p>
-          Honorary Doctoral Commencement Speaker, Deezer Music Hackathon winner and Ericsson Global
-          Innovation competition winner.
-        </p>
-      </article>
+    <div class="background-content">
+      <p class="section-intro">Research depth with a product bias.</p>
+
+      <div class="background-grid">
+        <article>
+          <h3>PhD in social network analysis</h3>
+          <p>
+            University of Zagreb, focused on graph algorithms, statistical validation and
+            data-processing methods for measuring user influence.
+          </p>
+        </article>
+        <article>
+          <h3>Eight peer-reviewed papers</h3>
+          <p>
+            Academic work included an article in <em>Complexity</em>, alongside six years combining
+            research engineering with doctoral work.
+          </p>
+        </article>
+        <article>
+          <h3>Recognized for execution and ideas</h3>
+          <p>
+            Honorary Doctoral Commencement Speaker, Deezer Music Hackathon winner and Ericsson
+            Global Innovation competition winner.
+          </p>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -45,6 +46,10 @@
 
   .section-title {
     max-width: 12ch;
+  }
+
+  .background-content > .section-intro {
+    margin: 0 0 clamp(3rem, 6vw, 5rem);
   }
 
   .background-grid {
@@ -71,7 +76,7 @@
     line-height: 1.2;
   }
 
-  p {
+  .background-grid p {
     min-width: 0;
     margin: 0;
     color: var(--color-muted);

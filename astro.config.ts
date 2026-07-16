@@ -8,5 +8,13 @@ export default defineConfig({
   output: 'static',
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      watch: {
+        // Google Drive's mounted filesystem can drop native change events.
+        // Polling keeps Vite's hot reload reliable in this workspace.
+        usePolling: true,
+        interval: 200,
+      },
+    },
   },
 });
