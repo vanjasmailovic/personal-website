@@ -7,7 +7,7 @@
   --color-line: #353a3f;
   --color-paper: #f1f2f0;
   --color-muted: #a7b0ba;
-  --color-accent: #d18862;
+  --color-accent: #a94f2b;
   --color-accent-strong: color-mix(in srgb, var(--color-accent) 80%, var(--color-paper));
   --font-sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, sans-serif;
 }
