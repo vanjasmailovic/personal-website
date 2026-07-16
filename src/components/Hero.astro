@@ -8,7 +8,11 @@ import avatar from '../assets/avatar.jpg';
     <p class="hero-kicker">
       Lead AI Engineer <span aria-hidden="true">/</span> Applied AI Consultant
     </p>
-    <h1 id="hero-title">I build AI products that make complex work measurably simpler.</h1>
+    <h1 id="hero-title">
+      <span>AI products that perform.</span>
+      <span>Cut complexity.</span>
+      <span>Deliver measurable impact.</span>
+    </h1>
     <p class="hero-intro">
       I help product and engineering leaders turn ambiguous AI opportunities into shipped
       capabilities — from executive assistants and document automation to analytics agents, anomaly
@@ -85,6 +89,14 @@ import avatar from '../assets/avatar.jpg';
     letter-spacing: -0.065em;
     line-height: 0.91;
     text-wrap: balance;
+  }
+
+  h1 span {
+    display: block;
+  }
+
+  h1 span + span {
+    margin-top: 0.14em;
   }
 
   .hero-intro {
