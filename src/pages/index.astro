@@ -1,0 +1,32 @@
+---
+import Background from '../components/Background.astro';
+import Capabilities from '../components/Capabilities.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import Contact from '../components/Contact.astro';
+import Evidence from '../components/Evidence.astro';
+import Experience from '../components/Experience.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Leadership from '../components/Leadership.astro';
+import Services from '../components/Services.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout>
+  <Header />
+  <main id="main-content">
+    <div id="home" tabindex="-1">
+      <Hero />
+      <Evidence />
+      <Services />
+      <Experience />
+      <Leadership />
+      <Capabilities />
+      <Background />
+    </div>
+    <CaseStudies />
+    <Contact />
+  </main>
+  <Footer />
+</MainLayout>

@@ -1,0 +1,94 @@
+---
+const evidence = [
+  { value: '15+', label: 'years across data, ML, and AI product delivery' },
+  { value: '~6 weeks', label: 'from early requirements to an active AI-assistant rollout' },
+  { value: '24x', label: 'reduction in monthly manual invoice-extraction work' },
+  { value: '5M+', label: 'credit decisions supported each year across 13 markets' },
+] as const;
+---
+
+<section class="evidence" aria-label="Selected professional outcomes">
+  <div class="site-shell evidence-grid">
+    {
+      evidence.map((item) => (
+        <div class="evidence-item">
+          <strong>{item.value}</strong>
+          <span>{item.label}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .evidence {
+    border-block: 1px solid var(--color-line);
+    background: var(--color-panel);
+  }
+
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .evidence-item {
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+    min-height: 11.5rem;
+    padding: 2rem clamp(1.2rem, 2.5vw, 2rem);
+  }
+
+  .evidence-item + .evidence-item {
+    border-left: 1px solid var(--color-line);
+  }
+
+  strong {
+    color: var(--color-paper);
+    font-size: clamp(1.9rem, 4vw, 3.25rem);
+    font-weight: 550;
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  span {
+    max-width: 16rem;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 48rem) {
+    .evidence-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .evidence-item {
+      min-height: 10.5rem;
+    }
+
+    .evidence-item:nth-child(3) {
+      border-left: 0;
+    }
+
+    .evidence-item:nth-child(n + 3) {
+      border-top: 1px solid var(--color-line);
+    }
+  }
+
+  @media (max-width: 28rem) {
+    .evidence-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .evidence-item {
+      min-height: 0;
+      padding-block: 1.75rem;
+    }
+
+    .evidence-item + .evidence-item {
+      border-top: 1px solid var(--color-line);
+      border-left: 0;
+    }
+  }
+</style>

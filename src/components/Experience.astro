@@ -1,0 +1,230 @@
+---
+import { Image } from 'astro:assets';
+
+import eqtLogo from '../assets/companies/eqt.jpg';
+import ericssonLogo from '../assets/companies/ericsson.png';
+import instantorLogo from '../assets/companies/instantor.jpg';
+import pagosLogo from '../assets/companies/pagos.jpg';
+import sandvikLogo from '../assets/companies/sandvik.jpg';
+import tinkLogo from '../assets/companies/tink.jpg';
+
+const experience = [
+  {
+    company: 'EQT',
+    role: 'AI Engineering Consultant via Northbridge',
+    period: '2026 — present',
+    logo: eqtLogo,
+    treatment: 'invert',
+  },
+  {
+    company: 'Pagos',
+    role: 'Lead Data Scientist & Engineering Manager',
+    period: '2023 — 2025',
+    logo: pagosLogo,
+    treatment: 'invert',
+  },
+  {
+    company: 'Tink',
+    role: 'Senior Data Scientist',
+    period: '2020 — 2023',
+    logo: tinkLogo,
+    treatment: 'invert',
+  },
+  {
+    company: 'Instantor',
+    role: 'Senior Data Scientist',
+    period: '2019 — 2020',
+    logo: instantorLogo,
+    treatment: 'screen',
+  },
+  {
+    company: 'Sandvik',
+    role: 'Data Scientist',
+    period: '2017 — 2019',
+    logo: sandvikLogo,
+    treatment: 'invert',
+  },
+  {
+    company: 'Ericsson',
+    role: 'Research Engineer & PhD Candidate',
+    period: '2011 — 2017',
+    logo: ericssonLogo,
+    treatment: 'screen',
+  },
+] as const;
+---
+
+<section class="section-block experience-section" aria-labelledby="experience-title">
+  <div class="site-shell">
+    <p class="section-kicker">Selected experience</p>
+    <div class="experience-heading">
+      <h2 class="section-title" id="experience-title">
+        Product work across different operating realities.
+      </h2>
+      <p class="section-intro">
+        Startup urgency, scale-up growth, and enterprise constraints require different choices. My
+        work spans each — including two successful acquisition journeys from Instantor to Tink and
+        Tink to Visa.
+      </p>
+    </div>
+
+    <ol class="experience-list">
+      {
+        experience.map((item, index) => (
+          <li>
+            <span class="experience-index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="logo-wrap">
+              <Image
+                src={item.logo}
+                alt={`${item.company} logo`}
+                width={190}
+                format="webp"
+                loading="lazy"
+                class:list={['company-logo', `company-logo--${item.treatment}`]}
+              />
+            </div>
+            <div class="experience-role">
+              <strong>{item.company}</strong>
+              <span>{item.role}</span>
+            </div>
+            <time>{item.period}</time>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .experience-section {
+    background: var(--color-panel);
+  }
+
+  .experience-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+    align-items: end;
+    gap: 3rem;
+  }
+
+  .experience-heading .section-intro {
+    margin: 0;
+  }
+
+  .experience-list {
+    padding: 0;
+    margin: clamp(3.5rem, 7vw, 6rem) 0 0;
+    border-top: 1px solid var(--color-line);
+    list-style: none;
+  }
+
+  li {
+    display: grid;
+    min-height: 8.5rem;
+    grid-template-columns: 3rem minmax(9rem, 0.7fr) minmax(15rem, 1.3fr) auto;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .experience-index,
+  time {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .logo-wrap {
+    display: flex;
+    width: 9.5rem;
+    height: 4rem;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .company-logo {
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.58;
+    transition: opacity 160ms ease;
+  }
+
+  .company-logo--invert {
+    filter: grayscale(1) invert(1) contrast(1.15);
+    mix-blend-mode: screen;
+  }
+
+  .company-logo--screen {
+    filter: grayscale(1) contrast(1.1);
+    mix-blend-mode: screen;
+  }
+
+  li:hover .company-logo {
+    opacity: 0.95;
+  }
+
+  .experience-role {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .experience-role strong {
+    font-size: 1.05rem;
+    font-weight: 650;
+  }
+
+  .experience-role span {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  time {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 48rem) {
+    .experience-heading {
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 1.75rem;
+    }
+
+    .experience-heading .section-intro {
+      margin: 0;
+    }
+
+    li {
+      grid-template-columns: 2rem minmax(7rem, 0.55fr) minmax(0, 1fr);
+    }
+
+    time {
+      grid-column: 3;
+    }
+  }
+
+  @media (max-width: 34rem) {
+    li {
+      min-height: 0;
+      grid-template-columns: 2rem minmax(0, 1fr);
+      align-items: start;
+      padding-block: 1.75rem;
+    }
+
+    .logo-wrap,
+    .experience-role,
+    time {
+      grid-column: 2;
+    }
+
+    .logo-wrap {
+      width: 8.5rem;
+      height: 3rem;
+    }
+  }
+</style>

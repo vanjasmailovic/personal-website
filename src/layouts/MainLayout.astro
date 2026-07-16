@@ -1,0 +1,76 @@
+---
+import { absoluteUrl, siteConfig } from '../config/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = siteConfig.title, description = siteConfig.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, siteConfig.origin).toString();
+const socialImage = absoluteUrl(siteConfig.image);
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  name: title,
+  description,
+  url: canonical,
+  mainEntity: {
+    '@type': 'Person',
+    name: siteConfig.name,
+    jobTitle: 'Lead AI Engineer and Applied AI Consultant',
+    url: siteConfig.origin,
+    image: socialImage,
+    email: `mailto:${siteConfig.email}`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Stockholm',
+      addressCountry: 'SE',
+    },
+    sameAs: [siteConfig.linkedIn],
+    knowsAbout: [
+      'AI engineering',
+      'Large language model applications',
+      'Machine learning',
+      'Data engineering',
+      'AI product development',
+    ],
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07090c" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Portrait of Vanja Smailovic" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content="Portrait of Vanja Smailovic" />
+
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <slot />
+  </body>
+</html>

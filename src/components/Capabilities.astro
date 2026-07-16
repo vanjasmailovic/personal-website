@@ -1,0 +1,147 @@
+---
+const groups = [
+  {
+    title: 'AI product systems',
+    items: [
+      'LLM applications',
+      'Multi-agent workflows',
+      'Structured outputs',
+      'RAG and embeddings',
+      'Text-to-SQL',
+      'LLM evaluation',
+    ],
+  },
+  {
+    title: 'Product and backend delivery',
+    items: ['Python', 'FastAPI', 'Pydantic', 'Docker', 'GCP Cloud Run', 'Testing and CI'],
+  },
+  {
+    title: 'Applied machine learning',
+    items: [
+      'scikit-learn',
+      'XGBoost',
+      'Meta Prophet',
+      'Anomaly detection',
+      'NLP',
+      'Model explainability',
+    ],
+  },
+  {
+    title: 'Data and analytics',
+    items: ['SQL', 'BigQuery', 'Redshift', 'Airflow', 'PySpark', 'ETL pipelines'],
+  },
+] as const;
+---
+
+<section class="section-block capabilities-section" aria-labelledby="capabilities-title">
+  <div class="site-shell">
+    <div class="capabilities-heading">
+      <div>
+        <p class="section-kicker">Capabilities</p>
+        <h2 class="section-title" id="capabilities-title">
+          A practical stack for shipping applied AI.
+        </h2>
+      </div>
+      <p class="section-intro">
+        Technologies are selected around the product and its constraints. These are the areas most
+        relevant to the work I deliver — not an exhaustive tool inventory.
+      </p>
+    </div>
+
+    <div class="capability-groups">
+      {
+        groups.map((group, index) => (
+          <section aria-labelledby={`capability-${index}`}>
+            <h3 id={`capability-${index}`}>{group.title}</h3>
+            <ul>
+              {group.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .capabilities-section {
+    background: var(--color-panel);
+  }
+
+  .capabilities-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+    align-items: end;
+    gap: 3rem;
+  }
+
+  .capabilities-heading .section-intro {
+    margin: 0;
+  }
+
+  .capability-groups {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    margin-top: clamp(3.5rem, 7vw, 6rem);
+    border: 1px solid var(--color-line);
+    background: var(--color-line);
+  }
+
+  .capability-groups section {
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+    background: var(--color-ink);
+  }
+
+  h3 {
+    min-height: 3rem;
+    margin: 0;
+    color: var(--color-paper);
+    font-size: 0.93rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+  }
+
+  ul {
+    display: grid;
+    gap: 0;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    list-style: none;
+  }
+
+  li {
+    padding-block: 0.75rem;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 60rem) {
+    .capability-groups {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .capabilities-heading {
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 1.75rem;
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .capability-groups {
+      grid-template-columns: 1fr;
+    }
+
+    h3 {
+      min-height: auto;
+    }
+  }
+</style>

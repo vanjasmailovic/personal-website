@@ -1,0 +1,6 @@
+.astro
+dist
+node_modules
+public/documents
+source-material
+local-reference

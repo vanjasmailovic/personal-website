@@ -1,0 +1,8 @@
+.astro/
+dist/
+node_modules/
+.DS_Store
+
+# Private/local source and hosting references. Public copies are kept in public/.
+source-material/
+local-reference/

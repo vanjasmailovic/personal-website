@@ -1,0 +1,194 @@
+---
+import { siteConfig } from '../config/site';
+---
+
+<section
+  class="section-block contact-section"
+  id="contact"
+  aria-labelledby="contact-title"
+  tabindex="-1"
+>
+  <div class="site-shell contact-layout">
+    <div class="contact-heading">
+      <p class="section-kicker">Contact</p>
+      <h2 class="section-title" id="contact-title">Have an AI product problem worth solving?</h2>
+      <p class="section-intro">
+        If you are evaluating an applied AI opportunity, unblocking a product, or looking for
+        hands-on technical leadership, email is the simplest place to start.
+      </p>
+      <a class="contact-email" href={`mailto:${siteConfig.email}`}>
+        {siteConfig.email}
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="contact-details">
+      <dl>
+        <div>
+          <dt>Location</dt>
+          <dd>{siteConfig.location}</dd>
+        </div>
+        <div>
+          <dt>LinkedIn</dt>
+          <dd>
+            <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer">
+              View LinkedIn profile <span class="sr-only">(opens in a new tab)</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <div class="document-links" aria-label="Professional documents">
+        <a
+          class="document-link"
+          href="/documents/vanja-smailovic-cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>View CV</span>
+          <small>PDF · opens in a new tab</small>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a
+          class="document-link"
+          href="/documents/vanja-smailovic-portfolio.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>View Portfolio</span>
+          <small>PDF · opens in a new tab</small>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding-block: clamp(5rem, 10vw, 9rem);
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+
+  .contact-section :global(.section-kicker) {
+    color: #173f33;
+  }
+
+  .section-title {
+    max-width: 13ch;
+  }
+
+  .section-intro {
+    color: #245347;
+  }
+
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 2.5rem;
+    color: var(--color-ink);
+    font-size: clamp(1.05rem, 2.2vw, 1.5rem);
+    font-weight: 700;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.35rem;
+  }
+
+  dl {
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid rgb(7 9 12 / 28%);
+  }
+
+  dl > div {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 1.2rem;
+    border-bottom: 1px solid rgb(7 9 12 / 28%);
+  }
+
+  dt {
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    color: #173f33;
+  }
+
+  dd a {
+    text-underline-offset: 0.25rem;
+  }
+
+  .document-links {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+  }
+
+  .document-link {
+    display: grid;
+    min-height: 5.5rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.15rem 1rem;
+    padding: 1rem 1.15rem;
+    border: 1px solid rgb(7 9 12 / 35%);
+    color: var(--color-ink);
+    text-decoration: none;
+    transition:
+      background-color 150ms ease,
+      transform 150ms ease;
+  }
+
+  .document-link:hover {
+    background: rgb(242 245 243 / 26%);
+    transform: translateY(-2px);
+  }
+
+  .document-link > span:first-child {
+    font-weight: 750;
+  }
+
+  .document-link > span:last-child {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    font-size: 1.25rem;
+  }
+
+  .document-link small {
+    color: #245347;
+    font-family: var(--font-mono);
+    font-size: 0.63rem;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 48rem) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 28rem) {
+    .contact-email {
+      font-size: 0.95rem;
+    }
+
+    dl > div {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+    }
+  }
+</style>

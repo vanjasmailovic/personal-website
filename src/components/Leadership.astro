@@ -1,0 +1,155 @@
+---
+const leadership = [
+  {
+    title: 'Technical and product leadership',
+    points: [
+      'Led applied AI, machine-learning, and data-science delivery from discovery to shipped products.',
+      'Turned ambiguous business problems into scoped technical plans, prototypes, and production capabilities.',
+      'Balanced technical quality, delivery speed, and business value across startup, scale-up, and enterprise settings.',
+      'Owned technical roadmaps and cross-functional delivery for B2B AI, ML, and analytics products.',
+    ],
+  },
+  {
+    title: 'People and stakeholder leadership',
+    points: [
+      'More than two years of engineering-management experience, leading a team of up to four.',
+      'Hired, onboarded, coached, and managed senior, mid-level, and junior data scientists.',
+      'Worked directly with founders, customers, and senior leaders including CEO, CTO, Chief of Staff, CPO, and VP-level stakeholders.',
+      'Built ways of working that strengthened execution, ownership, and individual growth.',
+    ],
+  },
+] as const;
+---
+
+<section class="section-block" aria-labelledby="leadership-title">
+  <div class="site-shell leadership-layout">
+    <div class="leadership-heading">
+      <p class="section-kicker">Leadership</p>
+      <h2 class="section-title" id="leadership-title">Close to the code. Clear on the outcome.</h2>
+      <p class="section-intro">
+        My role often sits across engineering, product, and commercial context: shaping what to
+        build, making the technical choices, and helping the team deliver it well.
+      </p>
+    </div>
+
+    <div class="leadership-columns">
+      {
+        leadership.map((column, index) => (
+          <article>
+            <span aria-hidden="true">0{index + 1}</span>
+            <h3>{column.title}</h3>
+            <ul>
+              {column.points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .leadership-layout {
+    display: grid;
+    grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1.28fr);
+    align-items: start;
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+
+  .leadership-heading {
+    position: sticky;
+    top: 7.5rem;
+  }
+
+  .section-title {
+    max-width: 12ch;
+  }
+
+  .leadership-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border: 1px solid var(--color-line);
+  }
+
+  article {
+    min-height: 35rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  article + article {
+    border-left: 1px solid var(--color-line);
+  }
+
+  article > span {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    margin: 4rem 0 0;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 560;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+  }
+
+  ul {
+    display: grid;
+    gap: 0;
+    padding: 0;
+    margin: 2.25rem 0 0;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    padding: 1rem 0 1rem 1.25rem;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  li::before {
+    position: absolute;
+    top: 1.55rem;
+    left: 0;
+    width: 0.35rem;
+    height: 0.35rem;
+    background: var(--color-accent);
+    content: '';
+  }
+
+  @media (max-width: 64rem) {
+    .leadership-layout {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+
+    .leadership-heading {
+      position: static;
+    }
+  }
+
+  @media (max-width: 42rem) {
+    .leadership-columns {
+      grid-template-columns: 1fr;
+    }
+
+    article {
+      min-height: 0;
+    }
+
+    article + article {
+      border-top: 1px solid var(--color-line);
+      border-left: 0;
+    }
+
+    h3 {
+      margin-top: 2.5rem;
+    }
+  }
+</style>

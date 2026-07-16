@@ -1,0 +1,283 @@
+---
+const navItems = [
+  { label: 'Home', href: '#home', id: 'home' },
+  { label: 'Case Studies', href: '#case-studies', id: 'case-studies' },
+  { label: 'Contact', href: '#contact', id: 'contact' },
+] as const;
+---
+
+<header class="site-header" data-site-header>
+  <div class="site-shell header-inner">
+    <a class="brand" href="#home" aria-label="Vanja Smailovic — home">
+      <span class="brand-mark" aria-hidden="true">VS</span>
+      <span class="brand-name">Vanja Smailovic</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <ul>
+        {
+          navItems.map((item, index) => (
+            <li>
+              <a
+                href={item.href}
+                data-nav-link
+                data-section-id={item.id}
+                aria-current={index === 0 ? 'location' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <details class="mobile-menu" data-mobile-menu>
+      <summary aria-label="Open navigation menu">
+        <span>Menu</span>
+        <span class="menu-icon" aria-hidden="true"></span>
+      </summary>
+      <nav aria-label="Mobile navigation">
+        <ul>
+          {
+            navItems.map((item, index) => (
+              <li>
+                <a
+                  href={item.href}
+                  data-nav-link
+                  data-section-id={item.id}
+                  aria-current={index === 0 ? 'location' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'));
+  const sectionIds = ['home', 'case-studies', 'contact'] as const;
+
+  const setActiveSection = (id: string): void => {
+    navLinks.forEach((link) => {
+      if (link.dataset.sectionId === id) {
+        link.setAttribute('aria-current', 'location');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  };
+
+  const sectionForHash = (hash: string): string => {
+    const id = hash.replace('#', '');
+    if (sectionIds.includes(id as (typeof sectionIds)[number])) return id;
+
+    const target = document.getElementById(id);
+    return target?.closest('#case-studies') ? 'case-studies' : 'home';
+  };
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      const targetId = link.hash.slice(1);
+      const target = document.getElementById(targetId);
+      const mobileMenu = link.closest('[data-mobile-menu]');
+
+      if (mobileMenu instanceof HTMLDetailsElement) mobileMenu.open = false;
+      setActiveSection(targetId);
+
+      window.requestAnimationFrame(() => {
+        target?.focus({ preventScroll: true });
+      });
+    });
+  });
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target.id) setActiveSection(visible.target.id);
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
+    );
+
+    sectionIds.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+  }
+
+  if (window.location.hash) setActiveSection(sectionForHash(window.location.hash));
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    z-index: 50;
+    top: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-line) 78%, transparent);
+    background: color-mix(in srgb, var(--color-ink) 94%, transparent);
+    backdrop-filter: blur(10px);
+  }
+
+  .header-inner {
+    display: flex;
+    min-height: 4.75rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    place-items: center;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+
+  .desktop-nav ul,
+  .mobile-menu ul {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  nav a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    padding: 0.65rem 0.9rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 650;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      color 150ms ease,
+      background-color 150ms ease;
+  }
+
+  nav a:hover,
+  nav a[aria-current='location'] {
+    color: var(--color-paper);
+  }
+
+  nav a[aria-current='location'] {
+    background: var(--color-panel-strong);
+    box-shadow: inset 0 -1px 0 var(--color-accent);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: relative;
+  }
+
+  .mobile-menu summary {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.65rem 0;
+    color: var(--color-paper);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    list-style: none;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .menu-icon,
+  .menu-icon::before {
+    display: block;
+    width: 1.15rem;
+    height: 1px;
+    background: currentColor;
+    content: '';
+    transition: transform 150ms ease;
+  }
+
+  .menu-icon::before {
+    transform: translateY(0.35rem);
+  }
+
+  .mobile-menu[open] .menu-icon {
+    transform: rotate(45deg);
+  }
+
+  .mobile-menu[open] .menu-icon::before {
+    transform: rotate(-90deg);
+  }
+
+  .mobile-menu nav {
+    position: absolute;
+    top: calc(100% + 1rem);
+    right: 0;
+    width: min(18rem, calc(100vw - 2rem));
+    border: 1px solid var(--color-line);
+    background: var(--color-panel);
+    box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 45%);
+  }
+
+  .mobile-menu ul {
+    display: grid;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .mobile-menu li + li {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .mobile-menu a {
+    width: 100%;
+    min-height: 3.5rem;
+    padding-inline: 1rem;
+  }
+
+  @media (max-width: 46rem) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: block;
+    }
+
+    .brand-name {
+      font-size: 0.95rem;
+    }
+  }
+</style>
