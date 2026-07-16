@@ -14,7 +14,6 @@ technologies:
   - Sensor data
   - Manufacturing process data
 outcome: Supported quality-control improvements and identified more than €800k in estimated savings.
-outcomeType: estimated
 ---
 
 #### Ownership and approach

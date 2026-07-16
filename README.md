@@ -1,6 +1,6 @@
 # Vanja Smailovic — consulting website
 
-Static professional website built with Astro, strict TypeScript, Tailwind CSS, and minimal browser JavaScript.
+Static professional website built with Astro, strict TypeScript, Tailwind CSS and minimal browser JavaScript.
 
 ## Local development
 

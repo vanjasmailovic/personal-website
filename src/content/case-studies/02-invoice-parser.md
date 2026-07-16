@@ -4,7 +4,7 @@ anchor: invoice-parser
 title: AI Invoice PDF Parser
 category: Document AI
 summary: A production parser that turns invoice PDFs into validated structured data.
-problem: Monthly invoice extraction was manual, slow, and error-prone.
+problem: Monthly invoice extraction was manual, slow and error-prone.
 built: A live, in-house parser converting invoice PDFs into validated structured data with extraction-quality checks.
 technologies:
   - Python
@@ -14,12 +14,11 @@ technologies:
   - PyMuPDF
   - Pydantic
 outcome: Reduced approximately one FTE day of monthly manual work to around 20 minutes — a 24x reduction — with approximately 99% typical accuracy.
-outcomeType: measured
 ---
 
 #### Ownership and approach
 
-Built the production, customer-facing parser and its validation approach. The workflow combined PDF extraction and OCR with a multimodal model, typed structured outputs, and schema-level checks.
+Built the production, customer-facing parser and its validation approach. The workflow combined PDF extraction and OCR with a multimodal model, typed structured outputs and schema-level checks.
 
 #### Important decisions and constraints
 

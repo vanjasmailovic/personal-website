@@ -56,13 +56,13 @@ const experience = [
 
 <section class="section-block experience-section" aria-labelledby="experience-title">
   <div class="site-shell">
-    <p class="section-kicker">Selected experience</p>
+    <p class="section-kicker">Selected experience and clients</p>
     <div class="experience-heading">
       <h2 class="section-title" id="experience-title">
         Product work across different operating realities.
       </h2>
       <p class="section-intro">
-        Startup urgency, scale-up growth, and enterprise constraints require different choices. My
+        Startup urgency, scale-up growth and enterprise constraints require different choices. My
         work spans each — including two successful acquisition journeys from Instantor to Tink and
         Tink to Visa.
       </p>
@@ -82,7 +82,11 @@ const experience = [
                 width={190}
                 format="webp"
                 loading="lazy"
-                class:list={['company-logo', `company-logo--${item.treatment}`]}
+                class:list={[
+                  'company-logo',
+                  `company-logo--${item.treatment}`,
+                  `company-logo--${item.company.toLowerCase()}`,
+                ]}
               />
             </div>
             <div class="experience-role">
@@ -142,17 +146,20 @@ const experience = [
   .logo-wrap {
     display: flex;
     width: 9.5rem;
-    height: 4rem;
+    height: 3.5rem;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
   }
 
   .company-logo {
     width: 100%;
-    max-height: 100%;
+    height: 100%;
     object-fit: contain;
     opacity: 0.58;
-    transition: opacity 160ms ease;
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
   }
 
   .company-logo--invert {
@@ -163,6 +170,23 @@ const experience = [
   .company-logo--screen {
     filter: grayscale(1) contrast(1.1);
     mix-blend-mode: screen;
+  }
+
+  .company-logo--pagos {
+    transform: scale(0.72);
+  }
+
+  .company-logo--tink {
+    transform: scale(1.75);
+  }
+
+  .company-logo--instantor,
+  .company-logo--sandvik {
+    transform: scale(1.8);
+  }
+
+  .company-logo--ericsson {
+    transform: scale(1.5);
   }
 
   li:hover .company-logo {

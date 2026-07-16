@@ -2,9 +2,9 @@
 const services = [
   {
     number: '01',
-    title: 'AI assistants and analytics agents',
+    title: 'AI assistants and agents',
     description:
-      'Conversational and multi-agent workflows that synthesize information, support decisions, and make domain analytics accessible through natural language.',
+      'Conversational and multi-agent workflows that synthesize information, support decisions and make domain analytics accessible through natural language.',
     capabilities: ['LLM assistants', 'Multi-agent workflows', 'Text-to-SQL', 'Tool calling'],
   },
   {
@@ -18,14 +18,14 @@ const services = [
     number: '03',
     title: 'Applied machine-learning products',
     description:
-      'Customer-facing and operational ML capabilities for monitoring, risk, classification, prediction, and prioritization.',
+      'Customer-facing and operational ML capabilities for monitoring, risk, classification, prediction and prioritization.',
     capabilities: ['Anomaly detection', 'Risk modeling', 'NLP classification', 'Regression'],
   },
   {
     number: '04',
     title: 'AI product discovery and delivery',
     description:
-      'Pragmatic support from ambiguous opportunity to evaluated prototype, technical plan, MVP, and production capability.',
+      'Pragmatic support from ambiguous opportunity to evaluated prototype, technical plan, MVP and production capability.',
     capabilities: [
       'Product discovery',
       'Evaluation design',
@@ -36,7 +36,13 @@ const services = [
 ] as const;
 ---
 
-<section class="section-block" aria-labelledby="services-title">
+<section
+  class="section-block"
+  id="services"
+  data-nav-section
+  aria-labelledby="services-title"
+  tabindex="-1"
+>
   <div class="site-shell">
     <div class="section-heading-grid">
       <div>
@@ -47,7 +53,7 @@ const services = [
       </div>
       <p class="section-intro">
         I work with product and engineering teams where AI needs to move beyond a demo — into a
-        system that is grounded, evaluated, maintainable, and valuable to the people using it.
+        system that is grounded, evaluated, maintainable and valuable to the people using it.
       </p>
     </div>
 

@@ -16,17 +16,36 @@ import MainLayout from '../layouts/MainLayout.astro';
 <MainLayout>
   <Header />
   <main id="main-content">
-    <div id="home" tabindex="-1">
+    <div id="home" data-nav-section tabindex="-1">
       <Hero />
       <Evidence />
-      <Services />
+    </div>
+    <Services />
+    <Capabilities />
+    <CaseStudies />
+    <div id="details" data-nav-section tabindex="-1">
+      <section class="section-block details-intro" aria-labelledby="details-title">
+        <div class="site-shell">
+          <p class="section-kicker">Details</p>
+          <h2 class="section-title" id="details-title">Experience, leadership and background.</h2>
+        </div>
+      </section>
       <Experience />
       <Leadership />
-      <Capabilities />
       <Background />
     </div>
-    <CaseStudies />
     <Contact />
   </main>
   <Footer />
 </MainLayout>
+
+<style>
+  .details-intro {
+    padding-bottom: clamp(3rem, 5vw, 4.5rem);
+    background: var(--color-panel);
+  }
+
+  .details-intro .section-title {
+    max-width: 15ch;
+  }
+</style>

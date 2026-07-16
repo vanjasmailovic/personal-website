@@ -16,7 +16,6 @@ technologies:
   - Query optimization
   - Anomaly detection
 outcome: Became the company’s second most important product area and was adopted by approximately 20 active B2B customers.
-outcomeType: mixed
 ---
 
 #### Ownership and approach
@@ -25,4 +24,4 @@ Led AI and machine-learning product development and cross-functional delivery fo
 
 #### Important decisions and constraints
 
-The product had to transform, query, and monitor merchant payments data efficiently enough to support customer-facing alerts. The implementation combined time-series anomaly detection with data transformation, Redshift querying, and the Cube.js semantic layer.
+The product had to transform, query and monitor merchant payments data efficiently enough to support customer-facing alerts. The implementation combined time-series anomaly detection with data transformation, Redshift querying and the Cube.js semantic layer.

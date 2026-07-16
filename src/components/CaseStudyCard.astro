@@ -7,52 +7,21 @@ interface Props {
 
 const { study } = Astro.props;
 const { Content } = await render(study);
-const number = String(study.data.order).padStart(2, '0');
-
-const outcomeLabels = {
-  measured: 'Measured outcome',
-  estimated: 'Estimated outcome',
-  qualitative: 'Qualitative outcome',
-  mixed: 'Measured + qualitative outcome',
-} as const;
 ---
 
-<article
-  class:list={['case-study-card', { featured: study.data.order <= 2 }]}
-  id={study.data.anchor}
-  data-case-study
-  tabindex="-1"
->
-  <header class="case-study-header">
-    <div class="case-number" aria-hidden="true">{number}</div>
-    <div class="case-title-group">
-      <p>{study.data.category}</p>
-      <h3>{study.data.title}</h3>
-    </div>
-    <a
-      class="case-permalink"
-      href={`#${study.data.anchor}`}
-      aria-label={`Link to ${study.data.title}`}
-    >
-      <span aria-hidden="true">#</span>
-    </a>
-  </header>
-
-  <div class="case-summary-grid">
-    <p class="case-summary">{study.data.summary}</p>
-    <div class="case-outcome">
-      <span>{outcomeLabels[study.data.outcomeType]}</span>
-      <p>{study.data.outcome}</p>
-    </div>
-  </div>
-
+<article class="case-study-card" id={study.data.anchor} data-case-study tabindex="-1">
   <details>
     <summary>
-      <span>View problem, approach, and technology</span>
+      <span class="case-title" role="heading" aria-level="3">{study.data.title}</span>
       <span class="summary-icon" aria-hidden="true"></span>
     </summary>
 
-    <div class="case-details">
+    <div class="case-expanded">
+      <div class="case-intro">
+        <p class="case-category">{study.data.category}</p>
+        <p class="case-summary">{study.data.summary}</p>
+      </div>
+
       <div class="case-facts">
         <section aria-labelledby={`${study.data.anchor}-problem`}>
           <h4 id={`${study.data.anchor}-problem`}>Problem</h4>
@@ -61,6 +30,10 @@ const outcomeLabels = {
         <section aria-labelledby={`${study.data.anchor}-built`}>
           <h4 id={`${study.data.anchor}-built`}>Built</h4>
           <p>{study.data.built}</p>
+        </section>
+        <section aria-labelledby={`${study.data.anchor}-outcome`}>
+          <h4 id={`${study.data.anchor}-outcome`}>Outcome</h4>
+          <p>{study.data.outcome}</p>
         </section>
         <section aria-labelledby={`${study.data.anchor}-technology`}>
           <h4 id={`${study.data.anchor}-technology`}>Technology</h4>
@@ -90,126 +63,42 @@ const outcomeLabels = {
     border-color: var(--color-accent);
   }
 
-  .case-study-card:hover {
+  .case-study-card:hover,
+  .case-study-card:has(details[open]) {
     background: var(--color-panel-strong);
-  }
-
-  .case-study-header {
-    display: grid;
-    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
-    align-items: start;
-    gap: 1rem;
-    padding: clamp(1.5rem, 3vw, 2.5rem);
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  .case-number {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-  }
-
-  .case-title-group p {
-    margin: 0 0 0.75rem;
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.67rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  h3 {
-    max-width: 26ch;
-    margin: 0;
-    font-size: clamp(1.6rem, 3.3vw, 2.75rem);
-    font-weight: 560;
-    letter-spacing: -0.04em;
-    line-height: 1.05;
-  }
-
-  .case-permalink {
-    display: grid;
-    width: 2.5rem;
-    height: 2.5rem;
-    place-items: center;
-    border: 1px solid var(--color-line);
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    text-decoration: none;
-    transition:
-      border-color 150ms ease,
-      color 150ms ease;
-  }
-
-  .case-permalink:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
-
-  .case-summary-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(20rem, 1.2fr);
-    gap: clamp(2rem, 6vw, 6rem);
-    padding: clamp(1.5rem, 3vw, 2.5rem);
-  }
-
-  .case-summary {
-    max-width: 32rem;
-    margin: 0;
-    color: #d6dcde;
-    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-  }
-
-  .case-outcome {
-    padding-left: clamp(1.25rem, 3vw, 2.25rem);
-    border-left: 1px solid var(--color-line);
-  }
-
-  .case-outcome > span {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.67rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .case-outcome p {
-    max-width: 44rem;
-    margin: 0.75rem 0 0;
-    color: var(--color-muted);
-  }
-
-  details {
-    border-top: 1px solid var(--color-line);
   }
 
   summary {
     display: flex;
-    min-height: 4rem;
+    min-height: 5rem;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding: 0.8rem clamp(1.5rem, 3vw, 2.5rem);
+    gap: 2rem;
+    padding: 1rem clamp(1.25rem, 3vw, 2.25rem);
     color: var(--color-paper);
     cursor: pointer;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
     list-style: none;
-    text-transform: uppercase;
   }
 
   summary::-webkit-details-marker {
     display: none;
   }
 
+  details[open] summary {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .case-title {
+    font-size: clamp(1.15rem, 2.1vw, 1.65rem);
+    font-weight: 580;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
   .summary-icon,
   .summary-icon::after {
     display: block;
+    flex: 0 0 auto;
     width: 1rem;
     height: 1px;
     background: var(--color-accent);
@@ -225,24 +114,50 @@ const outcomeLabels = {
     transform: rotate(0deg);
   }
 
-  .case-details {
-    display: grid;
-    grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.2fr);
-    gap: clamp(2rem, 6vw, 6rem);
+  .case-expanded {
     padding: clamp(1.5rem, 4vw, 3.5rem);
-    border-top: 1px solid var(--color-line);
     background: var(--color-ink);
+  }
+
+  .case-intro {
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 5rem);
+    padding-bottom: clamp(1.75rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .case-category {
+    margin: 0;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .case-summary {
+    max-width: 42rem;
+    margin: 0;
+    color: #d6dcde;
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
   }
 
   .case-facts {
     display: grid;
-    align-content: start;
-    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin-top: clamp(1.75rem, 4vw, 3rem);
+    border-top: 1px solid var(--color-line);
+    border-left: 1px solid var(--color-line);
   }
 
-  .case-facts section + section {
-    padding-top: 2rem;
-    border-top: 1px solid var(--color-line);
+  .case-facts section {
+    min-height: 12rem;
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+    border-right: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
   }
 
   h4,
@@ -280,7 +195,8 @@ const outcomeLabels = {
   }
 
   .case-narrative {
-    max-width: 44rem;
+    max-width: 52rem;
+    padding-top: clamp(2rem, 5vw, 4rem);
   }
 
   .case-narrative :global(h4:not(:first-child)) {
@@ -290,32 +206,22 @@ const outcomeLabels = {
   }
 
   @media (max-width: 44rem) {
-    .case-study-header {
-      grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+    summary {
+      min-height: 4.5rem;
+      gap: 1rem;
     }
 
-    .case-summary-grid,
-    .case-details {
+    .case-intro,
+    .case-facts {
       grid-template-columns: 1fr;
-      gap: 2rem;
     }
 
-    .case-outcome {
-      padding-top: 1.5rem;
-      padding-left: 0;
-      border-top: 1px solid var(--color-line);
-      border-left: 0;
-    }
-  }
-
-  @media (max-width: 30rem) {
-    .case-study-header {
-      grid-template-columns: 2rem minmax(0, 1fr);
+    .case-intro {
+      gap: 0.75rem;
     }
 
-    .case-permalink {
-      grid-column: 2;
-      margin-top: 0.5rem;
+    .case-facts section {
+      min-height: 0;
     }
   }
 </style>

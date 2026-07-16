@@ -9,40 +9,17 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
 <section
   class="section-block case-studies"
   id="case-studies"
+  data-nav-section
   aria-labelledby="case-studies-title"
   tabindex="-1"
 >
   <div class="site-shell">
     <div class="case-studies-heading">
-      <div>
-        <p class="section-kicker">Case studies</p>
-        <h2 class="section-title" id="case-studies-title">
-          Seven products, each grounded in a real operating problem.
-        </h2>
-      </div>
-      <div>
-        <p class="section-intro">
-          Each study separates the problem, what was built, the technical approach, and the outcome.
-          Client and employer identities are intentionally omitted from the narratives.
-        </p>
-        <p class="case-note">All outcome qualifiers are preserved from the source material.</p>
-      </div>
+      <p class="section-kicker">Case studies</p>
+      <h2 class="section-title" id="case-studies-title">
+        Seven products, each grounded in a real operating problem.
+      </h2>
     </div>
-
-    <nav class="case-index" aria-label="Case study index">
-      <ol>
-        {
-          studies.map((study) => (
-            <li>
-              <a href={`#${study.data.anchor}`} data-case-link>
-                <span aria-hidden="true">{String(study.data.order).padStart(2, '0')}</span>
-                {study.data.title}
-              </a>
-            </li>
-          ))
-        }
-      </ol>
-    </nav>
 
     <div class="case-study-list">
       {studies.map((study) => <CaseStudyCard study={study} />)}
@@ -55,22 +32,12 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
     const hash = window.location.hash;
     if (!hash) return;
 
-    const target = document.querySelector(hash);
-    if (!(target instanceof HTMLElement) || !target.matches('[data-case-study]')) return;
+    const target = document.getElementById(hash.slice(1));
+    if (!target?.matches('[data-case-study]')) return;
 
     const details = target.querySelector('details');
     if (details instanceof HTMLDetailsElement) details.open = true;
   };
-
-  document.querySelectorAll<HTMLAnchorElement>('[data-case-link]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const target = document.getElementById(link.hash.slice(1));
-      const details = target?.querySelector('details');
-
-      if (details instanceof HTMLDetailsElement) details.open = true;
-      window.requestAnimationFrame(() => target?.focus({ preventScroll: true }));
-    });
-  });
 
   revealCaseStudy();
   window.addEventListener('hashchange', revealCaseStudy);
@@ -83,109 +50,12 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
 
   .case-studies-heading {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
-    align-items: end;
-    gap: 3rem;
-  }
-
-  .case-studies-heading .section-intro {
-    margin: 0;
-  }
-
-  .case-note {
-    padding-left: 1rem;
-    margin: 1.25rem 0 0;
-    border-left: 1px solid var(--color-accent);
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.03em;
-  }
-
-  .case-index {
-    margin-top: clamp(3.5rem, 7vw, 6rem);
-    border: 1px solid var(--color-line);
-  }
-
-  .case-index ol {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .case-index li {
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  .case-index li:nth-child(odd) {
-    border-right: 1px solid var(--color-line);
-  }
-
-  .case-index li:nth-last-child(-n + 2) {
-    border-bottom: 0;
-  }
-
-  .case-index li:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    border-right: 0;
-    border-bottom: 0;
-  }
-
-  .case-index a {
-    display: grid;
-    min-height: 4.25rem;
-    grid-template-columns: 2.5rem minmax(0, 1fr);
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1rem;
-    color: #cad2d5;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition:
-      background-color 150ms ease,
-      color 150ms ease;
-  }
-
-  .case-index a:hover {
-    background: var(--color-panel-strong);
-    color: var(--color-paper);
-  }
-
-  .case-index a span {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 700;
+    gap: 0;
   }
 
   .case-study-list {
     display: grid;
-    gap: 1.25rem;
-    margin-top: 2rem;
-  }
-
-  @media (max-width: 48rem) {
-    .case-studies-heading {
-      grid-template-columns: 1fr;
-      align-items: start;
-      gap: 1.75rem;
-    }
-
-    .case-index ol {
-      grid-template-columns: 1fr;
-    }
-
-    .case-index li,
-    .case-index li:nth-child(odd),
-    .case-index li:nth-last-child(-n + 2) {
-      border-right: 0;
-      border-bottom: 1px solid var(--color-line);
-    }
-
-    .case-index li:last-child {
-      border-bottom: 0;
-    }
+    gap: 0.65rem;
+    margin-top: clamp(3rem, 6vw, 5rem);
   }
 </style>

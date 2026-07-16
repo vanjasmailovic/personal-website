@@ -16,7 +16,6 @@ technologies:
   - FAISS
   - Light RAG
 outcome: Enabled live natural-language access to expert-level payments insights and reduced reliance on manual analytics workflows.
-outcomeType: qualitative
 ---
 
 #### Ownership and approach

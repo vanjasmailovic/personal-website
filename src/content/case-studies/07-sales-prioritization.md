@@ -13,12 +13,11 @@ technologies:
   - Business prioritization logic
   - Geospatial visualization
 outcome: Helped sales teams navigate prospects geographically and focus outreach on higher-potential opportunities.
-outcomeType: qualitative
 ---
 
 #### Ownership and approach
 
-Built the interactive map from public US machine-shop directory data, covering collection, cleaning, categorization, and the final visualization used for sales planning.
+Built the interactive map from public US machine-shop directory data, covering collection, cleaning, categorization and the final visualization used for sales planning.
 
 #### Important decisions and constraints
 

@@ -17,7 +17,6 @@ const caseStudies = defineCollection({
     built: z.string().min(1),
     technologies: z.array(z.string()).min(3),
     outcome: z.string().min(1),
-    outcomeType: z.enum(['measured', 'estimated', 'qualitative', 'mixed']),
   }),
 });
 

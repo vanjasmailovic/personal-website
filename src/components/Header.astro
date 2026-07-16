@@ -1,7 +1,10 @@
 ---
 const navItems = [
   { label: 'Home', href: '#home', id: 'home' },
+  { label: 'Services', href: '#services', id: 'services' },
+  { label: 'Skills', href: '#skills', id: 'skills' },
   { label: 'Case Studies', href: '#case-studies', id: 'case-studies' },
+  { label: 'Details', href: '#details', id: 'details' },
   { label: 'Contact', href: '#contact', id: 'contact' },
 ] as const;
 ---
@@ -61,7 +64,7 @@ const navItems = [
 
 <script>
   const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'));
-  const sectionIds = ['home', 'case-studies', 'contact'] as const;
+  const sectionIds = ['home', 'services', 'skills', 'case-studies', 'details', 'contact'] as const;
 
   const setActiveSection = (id: string): void => {
     navLinks.forEach((link) => {
@@ -78,7 +81,8 @@ const navItems = [
     if (sectionIds.includes(id as (typeof sectionIds)[number])) return id;
 
     const target = document.getElementById(id);
-    return target?.closest('#case-studies') ? 'case-studies' : 'home';
+    const containingSection = target?.closest<HTMLElement>('[data-nav-section]');
+    return containingSection?.id ?? 'home';
   };
 
   navLinks.forEach((link) => {
@@ -267,7 +271,7 @@ const navItems = [
     padding-inline: 1rem;
   }
 
-  @media (max-width: 46rem) {
+  @media (max-width: 64rem) {
     .desktop-nav {
       display: none;
     }
