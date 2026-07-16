@@ -11,8 +11,6 @@ const caseStudies = defineCollection({
     order: z.number().int().min(1).max(7),
     anchor: z.string().regex(/^[a-z0-9-]+$/),
     title: z.string().min(1),
-    category: z.string().min(1),
-    summary: z.string().min(1),
     problem: z.string().min(1),
     built: z.string().min(1),
     technologies: z.array(z.string()).min(3),

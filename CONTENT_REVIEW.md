@@ -7,9 +7,9 @@ This file records the content and presentation decisions made for the first prod
 - Hero positioning combines the CV summary’s product focus, 15+ years of experience, hands-on ownership and technical leadership.
 - The four service groups consolidate the seven portfolio service bullets without expanding their factual scope.
 - Experience dates, role titles, acquisition history, leadership claims, education, research and awards come from the CV.
-- All seven case studies preserve the portfolio’s order and Problem / Built / Technology / Outcome structure.
-- Case-study details about ownership, constraints, evaluation, safeguards, validation and technical decisions are included only where supported by the CV.
-- Outcome wording retains source qualifiers such as “approximately,” “estimated” and “typical.” Category labels such as “measured” and “qualitative” are not shown.
+- All seven case studies reproduce the portfolio’s wording and Problem / Built / Tech / Outcome structure.
+- The expanded accordions omit category summaries, ownership sections and decision/constraint narratives.
+- Outcome wording retains the portfolio’s original qualifiers, including “~,” “approximately,” “estimated” and “typical.”
 
 ## Suggested rewrites used
 

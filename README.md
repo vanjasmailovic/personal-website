@@ -27,7 +27,7 @@ pnpm dev
 
 Open [http://localhost:4321](http://localhost:4321) in your browser. The page reloads automatically when you save a source file. Press `Ctrl+C` in the terminal to stop the server.
 
-If port 4321 is already occupied, Astro selects another port and prints the correct local URL in the terminal.
+Port `4321` is reserved for the live-reloading development server. Startup fails if that port is already occupied, preventing an older server from silently remaining at the expected URL. Stop the process already using the port, then run `pnpm dev` again.
 
 ### Inspect the production build
 
@@ -38,13 +38,14 @@ pnpm build
 pnpm preview
 ```
 
-Open the URL printed by Astro (normally [http://localhost:4321](http://localhost:4321)). The generated files are written to `dist/`.
+Open [http://localhost:4322](http://localhost:4322). Production preview intentionally uses a separate fixed port and does not live-reload; the generated files are written to `dist/`.
 
 ### Troubleshooting
 
 - If `pnpm` is not found, run `corepack enable`, then open a new terminal.
 - If dependencies behave unexpectedly after changing Node.js versions, remove `node_modules/` and run `pnpm install` again.
 - Run `node --version` and `pnpm --version` to confirm the installed versions.
+- If `pnpm dev` reports that port `4321` is in use, run `lsof -nP -iTCP:4321 -sTCP:LISTEN` to identify the stale process, stop it, and start the dev server again.
 
 ## Quality checks
 
