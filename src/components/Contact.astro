@@ -63,8 +63,8 @@ import { siteConfig } from '../config/site';
 <style>
   .contact-section {
     padding-block: clamp(5rem, 10vw, 9rem);
-    background: var(--color-accent);
-    color: var(--color-ink);
+    background: var(--color-panel-strong);
+    color: var(--color-paper);
   }
 
   .contact-layout {
@@ -74,7 +74,7 @@ import { siteConfig } from '../config/site';
   }
 
   .contact-section :global(.section-kicker) {
-    color: #173f33;
+    color: var(--color-muted);
   }
 
   .section-title {
@@ -82,7 +82,7 @@ import { siteConfig } from '../config/site';
   }
 
   .section-intro {
-    color: #245347;
+    color: var(--color-muted);
   }
 
   .contact-email {
@@ -90,28 +90,29 @@ import { siteConfig } from '../config/site';
     align-items: center;
     gap: 0.65rem;
     margin-top: 2.5rem;
-    color: var(--color-ink);
+    color: var(--color-paper);
     font-size: clamp(1.05rem, 2.2vw, 1.5rem);
-    font-weight: 700;
+    font-weight: 500;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.35rem;
   }
 
   .document-links {
     display: grid;
-    gap: 0.75rem;
+    gap: 0;
     margin-top: 2.5rem;
+    border-top: 1px solid var(--color-line);
   }
 
   .document-link {
     display: grid;
-    min-height: 5.5rem;
+    min-height: 5rem;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 0.15rem 1rem;
-    padding: 1rem 1.15rem;
-    border: 1px solid rgb(7 9 12 / 35%);
-    color: var(--color-ink);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-paper);
     text-decoration: none;
     transition:
       background-color 150ms ease,
@@ -119,12 +120,13 @@ import { siteConfig } from '../config/site';
   }
 
   .document-link:hover {
-    background: rgb(242 245 243 / 26%);
-    transform: translateY(-2px);
+    background: transparent;
+    color: var(--color-accent-strong);
+    transform: translateX(0.2rem);
   }
 
   .document-link > span:first-child {
-    font-weight: 750;
+    font-weight: 500;
   }
 
   .document-link > span:last-child {
@@ -134,10 +136,9 @@ import { siteConfig } from '../config/site';
   }
 
   .document-link small {
-    color: #245347;
-    font-family: var(--font-mono);
-    font-size: 0.63rem;
-    letter-spacing: 0.03em;
+    color: var(--color-muted);
+    font-size: 0.72rem;
+    letter-spacing: 0;
   }
 
   @media (max-width: 48rem) {

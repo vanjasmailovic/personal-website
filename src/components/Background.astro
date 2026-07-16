@@ -7,7 +7,6 @@
 
     <div class="background-grid">
       <article>
-        <span aria-hidden="true">01</span>
         <h3>PhD in social network analysis</h3>
         <p>
           University of Zagreb, focused on graph algorithms, statistical validation and
@@ -15,7 +14,6 @@
         </p>
       </article>
       <article>
-        <span aria-hidden="true">02</span>
         <h3>Eight peer-reviewed papers</h3>
         <p>
           Academic work included an article in <em>Complexity</em>, alongside six years combining
@@ -23,7 +21,6 @@
         </p>
       </article>
       <article>
-        <span aria-hidden="true">03</span>
         <h3>Recognized for execution and ideas</h3>
         <p>
           Honorary Doctoral Commencement Speaker, Deezer Music Hackathon winner and Ericsson Global
@@ -55,32 +52,27 @@
     border-top: 1px solid var(--color-line);
   }
 
-  article {
+  .background-grid > article {
     display: grid;
     min-height: 9rem;
-    grid-template-columns: 2.5rem minmax(11rem, 0.75fr) minmax(15rem, 1.25fr);
+    grid-template-columns: minmax(11rem, 0.75fr) minmax(15rem, 1.25fr);
     align-items: start;
     gap: 1.5rem;
     padding-block: 1.75rem;
     border-bottom: 1px solid var(--color-line);
   }
 
-  article > span {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-  }
-
   h3 {
+    min-width: 0;
     margin: 0;
     font-size: clamp(1.15rem, 2vw, 1.5rem);
-    font-weight: 560;
+    font-weight: 400;
     letter-spacing: -0.025em;
     line-height: 1.2;
   }
 
   p {
+    min-width: 0;
     margin: 0;
     color: var(--color-muted);
     font-size: 0.9rem;
@@ -94,12 +86,12 @@
   }
 
   @media (max-width: 40rem) {
-    article {
-      grid-template-columns: 2rem minmax(0, 1fr);
+    .background-grid > article {
+      grid-template-columns: minmax(0, 1fr);
     }
 
-    article p {
-      grid-column: 2;
+    .background-grid > article > p {
+      grid-column: 1;
     }
   }
 </style>

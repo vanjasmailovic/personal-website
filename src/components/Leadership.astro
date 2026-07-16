@@ -34,9 +34,8 @@ const leadership = [
 
     <div class="leadership-columns">
       {
-        leadership.map((column, index) => (
+        leadership.map((column) => (
           <article>
-            <span aria-hidden="true">0{index + 1}</span>
             <h3>{column.title}</h3>
             <ul>
               {column.points.map((point) => (
@@ -70,29 +69,23 @@ const leadership = [
   .leadership-columns {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    border: 1px solid var(--color-line);
+    gap: clamp(3rem, 7vw, 6rem);
   }
 
   article {
-    min-height: 35rem;
-    padding: clamp(1.5rem, 3vw, 2.5rem);
+    min-height: 0;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--color-line);
   }
 
   article + article {
-    border-left: 1px solid var(--color-line);
-  }
-
-  article > span {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 700;
+    border-left: 0;
   }
 
   h3 {
-    margin: 4rem 0 0;
+    margin: 0;
     font-size: clamp(1.4rem, 2.5vw, 2rem);
-    font-weight: 560;
+    font-weight: 400;
     letter-spacing: -0.035em;
     line-height: 1.15;
   }
@@ -117,9 +110,10 @@ const leadership = [
     position: absolute;
     top: 1.55rem;
     left: 0;
-    width: 0.35rem;
-    height: 0.35rem;
-    background: var(--color-accent);
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    background: var(--color-muted);
     content: '';
   }
 
@@ -146,10 +140,6 @@ const leadership = [
     article + article {
       border-top: 1px solid var(--color-line);
       border-left: 0;
-    }
-
-    h3 {
-      margin-top: 2.5rem;
     }
   }
 </style>

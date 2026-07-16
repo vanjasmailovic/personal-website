@@ -1,16 +1,15 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-ink: #07090c;
-  --color-panel: #0d1218;
-  --color-panel-strong: #121922;
-  --color-line: #27313a;
-  --color-paper: #f2f5f3;
-  --color-muted: #9ba7ae;
-  --color-accent: #7ed9b7;
-  --color-accent-strong: #a4efd1;
-  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo, Consolas, monospace;
+  --color-ink: #0b0d0d;
+  --color-panel: #111413;
+  --color-panel-strong: #171a18;
+  --color-line: #303431;
+  --color-paper: #efeee8;
+  --color-muted: #a5aaa5;
+  --color-accent: #cfc5b7;
+  --color-accent-strong: #f7f2e9;
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, sans-serif;
 }
 
 :root {
@@ -35,7 +34,7 @@ body {
   color: var(--color-paper);
   font-family: var(--font-sans);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -72,71 +71,67 @@ summary {
   scroll-margin-top: 5.5rem;
 }
 
+[data-nav-section]:focus,
+#home:focus {
+  outline: none;
+}
+
 .site-shell {
-  width: min(100% - 2.5rem, 76rem);
+  width: min(100% - 3rem, 72rem);
   margin-inline: auto;
 }
 
 .section-block {
-  padding-block: clamp(5rem, 9vw, 8.5rem);
-  border-top: 1px solid color-mix(in srgb, var(--color-line) 72%, transparent);
+  padding-block: clamp(6rem, 10vw, 9.5rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-line) 66%, transparent);
 }
 
 .section-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin: 0 0 1.25rem;
-  color: var(--color-accent);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1.2;
-  text-transform: uppercase;
+  margin: 0 0 1.5rem;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
 }
 
 .section-kicker::before {
-  width: 1.75rem;
-  height: 1px;
-  background: currentColor;
-  content: '';
+  display: none;
 }
 
 .section-title {
-  max-width: 18ch;
+  max-width: 20ch;
   margin: 0;
-  font-size: clamp(2.25rem, 5vw, 4.5rem);
-  font-weight: 560;
-  letter-spacing: -0.045em;
-  line-height: 0.98;
+  font-size: clamp(2.35rem, 4.8vw, 4.25rem);
+  font-weight: 400;
+  letter-spacing: -0.038em;
+  line-height: 1.03;
 }
 
 .section-intro {
   max-width: 42rem;
   margin: 1.5rem 0 0;
   color: var(--color-muted);
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-  line-height: 1.65;
+  font-size: clamp(1.05rem, 1.7vw, 1.22rem);
+  line-height: 1.7;
 }
 
 .button-link {
   display: inline-flex;
-  min-height: 3.25rem;
+  min-height: 3.15rem;
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  padding: 0.8rem 1.15rem;
+  padding: 0.8rem 1.3rem;
   border: 1px solid var(--color-accent);
+  border-radius: 999px;
   background: var(--color-accent);
   color: var(--color-ink);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  font-weight: 550;
+  letter-spacing: -0.005em;
   line-height: 1.2;
   text-decoration: none;
-  text-transform: uppercase;
   transition:
     background-color 160ms ease,
     border-color 160ms ease,
@@ -147,7 +142,7 @@ summary {
 .button-link:hover {
   border-color: var(--color-accent-strong);
   background: var(--color-accent-strong);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .button-link.secondary {
@@ -157,8 +152,8 @@ summary {
 }
 
 .button-link.secondary:hover {
-  border-color: var(--color-paper);
-  background: var(--color-panel-strong);
+  border-color: var(--color-muted);
+  background: transparent;
 }
 
 .skip-link {
@@ -203,10 +198,8 @@ footer {
   align-items: center;
   gap: 1rem;
   color: var(--color-muted);
-  font-family: var(--font-mono);
-  font-size: 0.67rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0;
 }
 
 .linkedin-link {
@@ -241,7 +234,7 @@ footer {
 
 @media (max-width: 40rem) {
   .site-shell {
-    width: min(100% - 2rem, 76rem);
+    width: min(100% - 2rem, 72rem);
   }
 
   .section-block {

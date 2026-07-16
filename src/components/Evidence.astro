@@ -23,30 +23,27 @@ const evidence = [
 <style>
   .evidence {
     border-block: 1px solid var(--color-line);
-    background: var(--color-panel);
+    background: var(--color-ink);
   }
 
   .evidence-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1.5rem, 4vw, 4rem);
   }
 
   .evidence-item {
     display: grid;
     align-content: start;
     gap: 0.75rem;
-    min-height: 11.5rem;
-    padding: 2rem clamp(1.2rem, 2.5vw, 2rem);
-  }
-
-  .evidence-item + .evidence-item {
-    border-left: 1px solid var(--color-line);
+    min-height: 10.5rem;
+    padding: 2.5rem 0;
   }
 
   strong {
     color: var(--color-paper);
     font-size: clamp(1.9rem, 4vw, 3.25rem);
-    font-weight: 550;
+    font-weight: 400;
     letter-spacing: -0.045em;
     line-height: 1;
   }
@@ -67,10 +64,6 @@ const evidence = [
       min-height: 10.5rem;
     }
 
-    .evidence-item:nth-child(3) {
-      border-left: 0;
-    }
-
     .evidence-item:nth-child(n + 3) {
       border-top: 1px solid var(--color-line);
     }
@@ -88,7 +81,6 @@ const evidence = [
 
     .evidence-item + .evidence-item {
       border-top: 1px solid var(--color-line);
-      border-left: 0;
     }
   }
 </style>

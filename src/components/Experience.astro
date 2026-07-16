@@ -70,11 +70,8 @@ const experience = [
 
     <ol class="experience-list">
       {
-        experience.map((item, index) => (
+        experience.map((item) => (
           <li>
-            <span class="experience-index" aria-hidden="true">
-              {String(index + 1).padStart(2, '0')}
-            </span>
             <div class="logo-wrap">
               <Image
                 src={item.logo}
@@ -124,23 +121,20 @@ const experience = [
     list-style: none;
   }
 
-  li {
+  .experience-list > li {
     display: grid;
     min-height: 8.5rem;
-    grid-template-columns: 3rem minmax(9rem, 0.7fr) minmax(15rem, 1.3fr) auto;
+    grid-template-columns: minmax(9rem, 0.7fr) minmax(15rem, 1.3fr) auto;
     align-items: center;
     gap: clamp(1rem, 3vw, 2.5rem);
     padding-block: 1.25rem;
     border-bottom: 1px solid var(--color-line);
   }
 
-  .experience-index,
   time {
     color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0;
   }
 
   .logo-wrap {
@@ -195,6 +189,7 @@ const experience = [
 
   .experience-role {
     display: grid;
+    min-width: 0;
     gap: 0.25rem;
   }
 
@@ -223,27 +218,27 @@ const experience = [
       margin: 0;
     }
 
-    li {
-      grid-template-columns: 2rem minmax(7rem, 0.55fr) minmax(0, 1fr);
+    .experience-list > li {
+      grid-template-columns: minmax(7rem, 0.55fr) minmax(0, 1fr);
     }
 
-    time {
-      grid-column: 3;
+    .experience-list > li > time {
+      grid-column: 2;
     }
   }
 
   @media (max-width: 34rem) {
-    li {
+    .experience-list > li {
       min-height: 0;
-      grid-template-columns: 2rem minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr);
       align-items: start;
       padding-block: 1.75rem;
     }
 
-    .logo-wrap,
-    .experience-role,
-    time {
-      grid-column: 2;
+    .experience-list > li > .logo-wrap,
+    .experience-list > li > .experience-role,
+    .experience-list > li > time {
+      grid-column: 1;
     }
 
     .logo-wrap {
