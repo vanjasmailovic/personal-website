@@ -1,12 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 
-import eqtLogo from '../assets/companies/eqt.jpg';
-import ericssonLogo from '../assets/companies/ericsson.png';
-import instantorLogo from '../assets/companies/instantor.jpg';
-import pagosLogo from '../assets/companies/pagos.jpg';
-import sandvikLogo from '../assets/companies/sandvik.jpg';
-import tinkLogo from '../assets/companies/tink.jpg';
+import eqtLogo from '../assets/companies/eqt-trimmed.png';
+import ericssonLogo from '../assets/companies/ericsson-trimmed.png';
+import instantorLogo from '../assets/companies/instantor-trimmed.png';
+import pagosLogo from '../assets/companies/pagos-trimmed.png';
+import sandvikLogo from '../assets/companies/sandvik-trimmed.png';
+import tinkLogo from '../assets/companies/tink-trimmed.png';
 
 const experience = [
   {
@@ -47,7 +47,7 @@ const experience = [
     period: '2019 — 2020',
     successfullyExited: true,
     logo: instantorLogo,
-    treatment: 'screen',
+    treatment: 'invert',
   },
   {
     company: 'Sandvik',
@@ -88,7 +88,7 @@ const experience = [
       {
         experience.map((item) => (
           <li>
-            <div class="logo-wrap">
+            <div class:list={['logo-wrap', `logo-wrap--${item.company.toLowerCase()}`]}>
               <Image
                 src={item.logo}
                 alt={`${item.company} logo`}
@@ -165,18 +165,21 @@ const experience = [
     width: 9.5rem;
     height: 3.5rem;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
   }
 
+  .logo-wrap--ericsson {
+    height: 5.25rem;
+  }
+
   .company-logo {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    max-width: 100%;
+    height: var(--logo-artwork-height);
+    max-height: 100%;
     object-fit: contain;
     opacity: 0.58;
-    transition:
-      opacity 160ms ease,
-      transform 160ms ease;
   }
 
   .company-logo--invert {
@@ -190,32 +193,32 @@ const experience = [
   }
 
   .company-logo--eqt {
+    --logo-artwork-height: 0.93rem;
     filter: grayscale(1) invert(1) brightness(1.5) contrast(1);
     opacity: 0.7;
-    transform: scale(1.15);
   }
 
   .company-logo--pagos {
+    --logo-artwork-height: 1.2rem;
     filter: grayscale(1) invert(1) brightness(1.5) contrast(1);
     opacity: 0.75;
-    transform: scale(0.65);
   }
 
   .company-logo--tink {
+    --logo-artwork-height: 1.71rem;
     opacity: 0.5;
-    transform: scale(1.75);
   }
 
   .company-logo--instantor {
-    transform: scale(2.2);
+    --logo-artwork-height: 1.67rem;
   }
 
   .company-logo--sandvik {
-    transform: scale(2.4);
+    --logo-artwork-height: 1.38rem;
   }
 
   .company-logo--ericsson {
-    transform: scale(1.45);
+    --logo-artwork-height: 5.12rem;
     opacity: 0.5;
   }
 
@@ -306,11 +309,16 @@ const experience = [
       max-width: 7rem;
       height: 3rem;
       margin-left: auto;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    .logo-wrap--ericsson {
+      height: 5.25rem;
     }
 
     .company-logo {
       object-position: right top;
-      transform-origin: right center;
     }
   }
 </style>
