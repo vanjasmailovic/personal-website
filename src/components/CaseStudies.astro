@@ -8,14 +8,13 @@ const studies = (await getCollection('caseStudies')).sort((a, b) => a.data.order
 
 <section
   class="section-block case-studies"
-  id="case-studies"
   data-nav-section
-  aria-labelledby="case-studies-title"
-  tabindex="-1"
+  data-section-id="case-studies"
+  aria-labelledby="case-studies"
 >
   <div class="site-shell">
     <div class="case-studies-heading">
-      <h2 class="section-title" id="case-studies-title">Case Studies</h2>
+      <h2 class="section-title" id="case-studies" tabindex="-1">Case Studies</h2>
       <p class="section-intro">Seven products, each grounded in a real operating problem.</p>
     </div>
 

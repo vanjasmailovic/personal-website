@@ -81,7 +81,7 @@ const navItems = [
 
     const target = document.getElementById(id);
     const containingSection = target?.closest<HTMLElement>('[data-nav-section]');
-    return containingSection?.id ?? 'home';
+    return containingSection?.dataset.sectionId ?? 'home';
   };
 
   navLinks.forEach((link) => {
@@ -106,13 +106,17 @@ const navItems = [
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-        if (visible?.target.id) setActiveSection(visible.target.id);
+        if (visible?.target instanceof HTMLElement && visible.target.dataset.sectionId) {
+          setActiveSection(visible.target.dataset.sectionId);
+        }
       },
       { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
     );
 
     sectionIds.forEach((id) => {
-      const section = document.getElementById(id);
+      const section = document.querySelector<HTMLElement>(
+        `[data-nav-section][data-section-id="${id}"]`,
+      );
       if (section) observer.observe(section);
     });
   }
