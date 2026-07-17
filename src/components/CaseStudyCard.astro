@@ -9,26 +9,39 @@ interface Props {
 const { study, index } = Astro.props;
 
 const outcomeAccents = [
+  '~6 weeks',
   '2.5 hours saved',
   '24x reduction',
   'natural-language access',
+  'expert-level payments insights',
   '20 active B2B customers',
   'more than 5 million credit decisions',
+  '150 live customers',
+  '13 markets',
   'savings of €800k+',
   'higher-potential opportunities',
 ];
 
 const accentOutcome = (outcome: string) => {
-  const accent = outcomeAccents.find((phrase) => outcome.includes(phrase));
-  if (!accent) return [{ text: outcome, accented: false }];
+  const matches = outcomeAccents
+    .map((text) => ({ text, start: outcome.indexOf(text) }))
+    .filter(({ start }) => start >= 0)
+    .sort((a, b) => a.start - b.start);
 
-  const accentStart = outcome.indexOf(accent);
+  if (!matches.length) return [{ text: outcome, accented: false }];
 
-  return [
-    { text: outcome.slice(0, accentStart), accented: false },
-    { text: accent, accented: true },
-    { text: outcome.slice(accentStart + accent.length), accented: false },
-  ].filter((segment) => segment.text);
+  const segments: { text: string; accented: boolean }[] = [];
+  let cursor = 0;
+
+  matches.forEach(({ text, start }) => {
+    if (start > cursor) segments.push({ text: outcome.slice(cursor, start), accented: false });
+    segments.push({ text, accented: true });
+    cursor = start + text.length;
+  });
+
+  if (cursor < outcome.length) segments.push({ text: outcome.slice(cursor), accented: false });
+
+  return segments;
 };
 
 const outcomeSegments = accentOutcome(study.data.outcome);
@@ -160,10 +173,6 @@ const outcomeSegments = accentOutcome(study.data.outcome);
 
   .case-facts section:first-child {
     padding-top: 1.2rem;
-  }
-
-  .case-outcome h4 {
-    color: var(--color-accent);
   }
 
   h4 {
