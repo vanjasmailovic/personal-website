@@ -189,25 +189,34 @@ const experience = [
     mix-blend-mode: screen;
   }
 
+  .company-logo--eqt {
+    filter: grayscale(1) invert(1) brightness(1.5) contrast(1);
+    opacity: 0.7;
+    transform: scale(1.15);
+  }
+
   .company-logo--pagos {
-    transform: scale(0.72);
+    filter: grayscale(1) invert(1) brightness(1.5) contrast(1);
+    opacity: 0.75;
+    transform: scale(0.65);
   }
 
   .company-logo--tink {
+    opacity: 0.5;
     transform: scale(1.75);
   }
 
-  .company-logo--instantor,
+  .company-logo--instantor {
+    transform: scale(2.2);
+  }
+
   .company-logo--sandvik {
-    transform: scale(1.8);
+    transform: scale(2.4);
   }
 
   .company-logo--ericsson {
-    transform: scale(1.5);
-  }
-
-  li:hover .company-logo {
-    opacity: 0.95;
+    transform: scale(1.45);
+    opacity: 0.5;
   }
 
   .experience-role {
@@ -271,20 +280,37 @@ const experience = [
   @media (max-width: 34rem) {
     .experience-list > li {
       min-height: 0;
-      grid-template-columns: minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 8.5rem);
       align-items: start;
       padding-block: 1.75rem;
     }
 
-    .experience-list > li > .logo-wrap,
     .experience-list > li > .experience-role,
     .experience-list > li > time {
       grid-column: 1;
     }
 
-    .logo-wrap {
-      width: 8.5rem;
-      height: 3rem;
+    .experience-list > li > .experience-role,
+    .experience-list > li > .logo-wrap {
+      grid-row: 1;
     }
+
+    .experience-list > li > time {
+      grid-row: 2;
+    }
+
+    .logo-wrap {
+      grid-column: 2;
+      width: 100%;
+      max-width: 8.5rem;
+      height: 3rem;
+      margin-left: auto;
+    }
+
+    .company-logo {
+      object-position: right top;
+      transform-origin: right center;
+    }
+
   }
 </style>
