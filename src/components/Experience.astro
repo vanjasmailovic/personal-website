@@ -11,43 +11,61 @@ import tinkLogo from '../assets/companies/tink.jpg';
 const experience = [
   {
     company: 'EQT',
-    role: 'AI Engineering Consultant via Northbridge',
+    rolePrefix: null,
+    role: ' via Northbridge',
+    roleAccent: 'AI Engineering Consultant',
     period: '2026 — present',
+    successfullyExited: false,
     logo: eqtLogo,
     treatment: 'invert',
   },
   {
     company: 'Pagos',
-    role: 'Lead Data Scientist & Engineering Manager',
+    rolePrefix: null,
+    role: ' & Engineering Manager',
+    roleAccent: 'Lead Data Scientist',
     period: '2023 — 2025',
+    successfullyExited: false,
     logo: pagosLogo,
     treatment: 'invert',
   },
   {
     company: 'Tink',
+    rolePrefix: null,
     role: 'Senior Data Scientist',
+    roleAccent: null,
     period: '2020 — 2023',
+    successfullyExited: true,
     logo: tinkLogo,
     treatment: 'invert',
   },
   {
     company: 'Instantor',
+    rolePrefix: null,
     role: 'Senior Data Scientist',
+    roleAccent: null,
     period: '2019 — 2020',
+    successfullyExited: true,
     logo: instantorLogo,
     treatment: 'screen',
   },
   {
     company: 'Sandvik',
+    rolePrefix: null,
     role: 'Data Scientist',
+    roleAccent: null,
     period: '2017 — 2019',
+    successfullyExited: false,
     logo: sandvikLogo,
     treatment: 'invert',
   },
   {
     company: 'Ericsson',
-    role: 'Research Engineer & PhD Candidate',
+    rolePrefix: 'Research Engineer & ',
+    role: '',
+    roleAccent: 'PhD Candidate',
     period: '2011 — 2017',
+    successfullyExited: false,
     logo: ericssonLogo,
     treatment: 'screen',
   },
@@ -85,8 +103,15 @@ const experience = [
               />
             </div>
             <div class="experience-role">
-              <strong>{item.company}</strong>
-              <span>{item.role}</span>
+              <div class="company-heading">
+                <strong>{item.company}</strong>
+                {item.successfullyExited && <span class="exit-pill">Successfully Exited</span>}
+              </div>
+              <span>
+                {item.rolePrefix}
+                {item.roleAccent && <span class="text-accent">{item.roleAccent}</span>}
+                {item.role}
+              </span>
             </div>
             <time>{item.period}</time>
           </li>
@@ -196,7 +221,25 @@ const experience = [
     font-weight: 650;
   }
 
-  .experience-role span {
+  .company-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .exit-pill {
+    padding: 0.24rem 0.62rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+    border-radius: 999px;
+    color: var(--color-accent);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.3;
+  }
+
+  .experience-role > span {
     color: var(--color-muted);
     font-size: 0.9rem;
   }
