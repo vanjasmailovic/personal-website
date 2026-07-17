@@ -54,12 +54,6 @@ const outcomeSegments = accentOutcome(study.data.outcome);
           <h4 id={`${study.data.anchor}-built`}>Built</h4>
           <p>{study.data.built}</p>
         </section>
-        <section aria-labelledby={`${study.data.anchor}-technology`}>
-          <h4 id={`${study.data.anchor}-technology`}>Tech</h4>
-          <ul>
-            {study.data.technologies.map((technology) => <li>{technology}</li>)}
-          </ul>
-        </section>
         <section class="case-outcome" aria-labelledby={`${study.data.anchor}-outcome`}>
           <h4 id={`${study.data.anchor}-outcome`}>Outcome</h4>
           <p>
@@ -69,6 +63,12 @@ const outcomeSegments = accentOutcome(study.data.outcome);
               ))
             }
           </p>
+        </section>
+        <section aria-labelledby={`${study.data.anchor}-technology`}>
+          <h4 id={`${study.data.anchor}-technology`}>Tech</h4>
+          <ul>
+            {study.data.technologies.map((technology) => <li>{technology}</li>)}
+          </ul>
         </section>
       </div>
     </div>
