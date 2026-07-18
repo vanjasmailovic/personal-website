@@ -7,7 +7,7 @@ export const siteConfig = {
   email: 'vanja.smailovic@gmail.com',
   location: 'Stockholm, Sweden',
   linkedIn: 'https://www.linkedin.com/in/vanjasmailovic',
-  image: '/images/vanja-smailovic.jpg',
+  image: '/images/vanja-smailovic.jpg?v=20260718',
 } as const;
 
 export const absoluteUrl = (path: string): string => new URL(path, siteConfig.origin).toString();
