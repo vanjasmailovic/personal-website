@@ -7,7 +7,7 @@ This file records the content and presentation decisions made for the first prod
 - Hero positioning combines the CV summary’s product focus, 15+ years of experience, hands-on ownership and technical leadership.
 - The four service groups consolidate the seven portfolio service bullets without expanding their factual scope.
 - Experience dates, role titles, acquisition history, leadership claims, education, research and awards come from the CV.
-- All seven case studies reproduce the portfolio’s wording and Problem / Built / Tech / Outcome structure.
+- All eight case studies reproduce the portfolio’s wording and Problem / Built / Tech / Outcome structure.
 - The expanded accordions omit category summaries, ownership sections and decision/constraint narratives.
 - Outcome wording retains the portfolio’s original qualifiers, including “~,” “approximately,” “estimated” and “typical.”
 
@@ -61,6 +61,6 @@ No unresolved factual conflict currently blocks publication.
 - Top-level navigation is Home, Services, Skills, Case Studies, Details and Contact.
 - Home contains the hero and quantified evidence.
 - Services and Skills are direct navigation destinations. CV and portfolio links are repeated under Skills.
-- All seven case studies remain on the main page as individual native accordions with stable anchor IDs.
+- All eight case studies remain on the main page as individual native accordions with stable anchor IDs.
 - Details contains selected experience and clients, leadership and academic foundation.
 - Contact contains direct email, location, LinkedIn, CV and portfolio links. No contact form is included.

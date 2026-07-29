@@ -8,7 +8,7 @@ const caseStudies = defineCollection({
     pattern: '**/*.md',
   }),
   schema: z.object({
-    order: z.number().int().min(1).max(7),
+    order: z.number().int().min(1).max(8),
     anchor: z.string().regex(/^[a-z0-9-]+$/),
     title: z.string().min(1),
     problem: z.string().min(1),
