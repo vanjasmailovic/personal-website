@@ -1,17 +1,19 @@
 ---
-order: 1
+order: 2
 anchor: executive-assistant
 title: CEO-facing AI Executive Assistant
-problem: CEO office faced high-volume, high-context information workflows around email triage and daily briefings.
-built: Multi-agent AI assistant for email classification, briefing and source-grounded summaries.
+problem: CEO office faced high-volume, high-context information workflows across email, calendar, Slack and news.
+built: Interactive multi-agent assistant for real-time chat, daily briefings and source-grounded summaries across email, calendar and Slack.
 technologies:
   - Python
   - Google ADK
   - Gemini
-  - Claude
   - Vertex AI
-  - LiteLLM
+  - FastAPI
   - Pydantic
   - Google and Slack APIs
-outcome: Active initial rollout in ~6 weeks, estimated 2.5 hours saved per week in executive email reading time.
+  - CopilotKit / AG-UI
+  - MCP
+  - Datadog
+outcome: Demonstrated potential to save time gathering information, assembling context and switching between workplace tools.
 ---

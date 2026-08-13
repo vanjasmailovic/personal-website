@@ -1,5 +1,5 @@
 ---
-order: 8
+order: 9
 anchor: transaction-anonymization
 title: Bank Transaction Anonymization Pipeline
 problem: Strict regulatory requirements prevented data teams from accessing bank transaction data essential to daily analysis and product development.

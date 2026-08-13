@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 6
 anchor: credit-risk
 title: Credit Default Risk Modeling
 problem: Credit providers needed stronger risk assessment from raw bank transaction data.

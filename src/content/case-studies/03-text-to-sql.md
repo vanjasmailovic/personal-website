@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 4
 anchor: text-to-sql
 title: Text-to-SQL AI Payments Analytics Agent
 problem: Customers needed self-serve payments analytics without SQL or domain knowledge.

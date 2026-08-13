@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 3
 anchor: invoice-parser
 title: AI Invoice PDF Parser
 problem: Monthly invoice extraction was manual, slow and error-prone.

@@ -7,7 +7,7 @@ This file records the content and presentation decisions made for the first prod
 - Hero positioning combines the CV summary’s product focus, 15+ years of experience, hands-on ownership and technical leadership.
 - The four service groups consolidate the seven portfolio service bullets without expanding their factual scope.
 - Experience dates, role titles, acquisition history, leadership claims, education, research and awards come from the CV.
-- All eight case studies reproduce the portfolio’s wording and Problem / Built / Tech / Outcome structure.
+- The original eight case studies reproduced the portfolio’s wording and Problem / Built / Tech / Outcome structure.
 - The expanded accordions omit category summaries, ownership sections and decision/constraint narratives.
 - Outcome wording retains the portfolio’s original qualifiers, including “~,” “approximately,” “estimated” and “typical.”
 
@@ -48,6 +48,12 @@ No unresolved factual conflict currently blocks publication.
 - The site does not include a contact form, telephone number, analytics, tracking, cookies or a cookie banner.
 - No account screenshots, DNS information, or hosting identifiers are included in the production site.
 
+## Portfolio PDF synchronization
+
+- The published portfolio contains the same nine-case-study structure and ordering as the website.
+- Vanja explicitly accepted the first two case studies' differing Tech lists as aligned for this portfolio version. Their Problem, Built and Outcome wording matches the website.
+- Website links use a content-hashed PDF filename to bypass stale browser and CDN caches. The stable PDF filename is also updated for compatibility.
+
 ## Proposed design changes
 
 - Dark, high-contrast visual system selected after review, with a restrained mint accent and no gradients.
@@ -61,6 +67,6 @@ No unresolved factual conflict currently blocks publication.
 - Top-level navigation is Home, Services, Skills, Case Studies, Details and Contact.
 - Home contains the hero and quantified evidence.
 - Services and Skills are direct navigation destinations. CV and portfolio links are repeated under Skills.
-- All eight case studies remain on the main page as individual native accordions with stable anchor IDs.
+- All nine case studies remain on the main page as individual native accordions with stable anchor IDs.
 - Details contains selected experience and clients, leadership and academic foundation.
 - Contact contains direct email, location, LinkedIn, CV and portfolio links. No contact form is included.

@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 7
 anchor: manufacturing-regression
 title: Manufacturing Cost-Savings Regression Model
 problem: Inconsistent layer thickness affected quality in tungsten-carbide metal-cutting insert production.

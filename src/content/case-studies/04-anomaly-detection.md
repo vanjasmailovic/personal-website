@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 5
 anchor: anomaly-detection
 title: Payments Anomaly Detection Product
 problem: Merchants needed monitoring and alerting for unusual payments behavior.

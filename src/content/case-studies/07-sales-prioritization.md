@@ -1,5 +1,5 @@
 ---
-order: 7
+order: 8
 anchor: sales-prioritization
 title: Manufacturing Sales-Prioritization Map
 problem: Sales teams needed prioritized US machine-shop prospects for targeted outreach.
