@@ -35,6 +35,10 @@ No unresolved factual conflict currently blocks publication.
 
 ## Omitted or condensed material
 
+- The supplemental career-details document informs Skills, Services and Leadership: training-data validation, leakage prevention, historical evaluation, production monitoring, incident triage, CI/CD, Legal collaboration and customer-facing model explanations.
+- These additions exclude SLA claims, additional mentoring claims, and formatting/type-hint details at Vanja's request. Existing coaching copy is retained. Case-study wording and public PDFs are unchanged.
+- Production monitoring does not imply automated drift evaluation or retraining; staged customer rollouts do not imply randomized A/B testing.
+
 - Telephone number is omitted from the webpage. It remains inside the public CV PDF.
 - Detailed responsibility and technology lists for every employer are condensed for page readability; the full CV remains linked.
 - Individual publication titles and the full education timeline are condensed into an academic-foundation section.
