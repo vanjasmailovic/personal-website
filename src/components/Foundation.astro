@@ -1,13 +1,13 @@
-<section class="section-block background-section" aria-labelledby="background-title">
-  <div class="site-shell background-layout">
-    <h2 class="section-title" id="background-title">Foundation</h2>
+<section class="section-block foundation-section" aria-labelledby="foundation-title">
+  <div class="site-shell foundation-layout">
+    <h2 class="section-title" id="foundation-title">Foundation</h2>
 
-    <div class="background-content">
+    <div class="foundation-content">
       <p class="section-intro">
         Research depth with a{' '}<span class="text-accent">product</span>{' '}bias.
       </p>
 
-      <div class="background-grid">
+      <div class="foundation-grid">
         <article>
           <h3>PhD in social network analysis</h3>
           <p>
@@ -35,11 +35,11 @@
 </section>
 
 <style>
-  .background-section {
+  .foundation-section {
     background: var(--color-panel);
   }
 
-  .background-layout {
+  .foundation-layout {
     display: grid;
     grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 1.3fr);
     align-items: start;
@@ -50,16 +50,16 @@
     max-width: 12ch;
   }
 
-  .background-content > .section-intro {
+  .foundation-content > .section-intro {
     margin: 0 0 clamp(3rem, 6vw, 5rem);
   }
 
-  .background-grid {
+  .foundation-grid {
     display: grid;
     border-top: 1px solid var(--color-line);
   }
 
-  .background-grid > article {
+  .foundation-grid > article {
     display: grid;
     min-height: 9rem;
     grid-template-columns: minmax(11rem, 0.75fr) minmax(15rem, 1.25fr);
@@ -78,7 +78,7 @@
     line-height: 1.2;
   }
 
-  .background-grid p {
+  .foundation-grid p {
     min-width: 0;
     margin: 0;
     color: var(--color-muted);
@@ -86,18 +86,18 @@
   }
 
   @media (max-width: 62rem) {
-    .background-layout {
+    .foundation-layout {
       grid-template-columns: 1fr;
       gap: 3.5rem;
     }
   }
 
   @media (max-width: 40rem) {
-    .background-grid > article {
+    .foundation-grid > article {
       grid-template-columns: minmax(0, 1fr);
     }
 
-    .background-grid > article > p {
+    .foundation-grid > article > p {
       grid-column: 1;
     }
   }
