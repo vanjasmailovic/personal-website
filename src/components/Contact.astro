@@ -11,31 +11,10 @@ import { siteConfig } from '../config/site';
   tabindex="-1"
 >
   <div class="site-shell contact-layout">
-    <div class="contact-heading">
-      <p class="section-kicker">Contact</p>
-      <h2 class="section-title" id="contact-title">Have an AI or ML product problem worth solving?</h2>
-      <p class="section-intro">
-        If you are evaluating an AI or ML opportunity, unblocking a product, or looking for
-        hands-on technical leadership, email is the simplest place to start.
-      </p>
-      <a class="contact-email" href={`mailto:${siteConfig.email}`}>
-        <span class="text-accent">{siteConfig.email}</span>
-        <span aria-hidden="true">↗</span>
-      </a>
-    </div>
+    <p class="section-kicker">Contact and CV</p>
 
     <div class="contact-details">
       <div class="document-links" aria-label="Professional documents">
-        <a
-          class="document-link"
-          href={siteConfig.linkedIn}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>View{' '}<span class="text-accent">LinkedIn Profile</span></span>
-          <small>Profile · opens in a new tab</small>
-          <span aria-hidden="true">↗</span>
-        </a>
         <a
           class="document-link"
           href="/documents/vanja-smailovic-cv.pdf"
@@ -56,7 +35,31 @@ import { siteConfig } from '../config/site';
           <small>PDF · opens in a new tab</small>
           <span aria-hidden="true">↗</span>
         </a>
+        <a
+          class="document-link"
+          href={siteConfig.linkedIn}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>View{' '}<span class="text-accent">LinkedIn Profile</span></span>
+          <small>Profile · opens in a new tab</small>
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
+    </div>
+
+    <div class="contact-heading">
+      <h2 class="section-title" id="contact-title">
+        Have an AI or ML product problem worth solving?
+      </h2>
+      <p class="section-intro">
+        If you are evaluating an AI or ML opportunity, unblocking a product, or looking for hands-on
+        technical leadership, email is the simplest place to start.
+      </p>
+      <a class="contact-email" href={`mailto:${siteConfig.email}`}>
+        <span class="text-accent">{siteConfig.email}</span>
+        <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </div>
 </section>
@@ -71,10 +74,22 @@ import { siteConfig } from '../config/site';
   .contact-layout {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
-    gap: clamp(3rem, 9vw, 9rem);
+    column-gap: clamp(3rem, 9vw, 9rem);
+    row-gap: 0;
+  }
+
+  .contact-heading {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .contact-details {
+    grid-column: 2;
+    grid-row: 1 / span 2;
   }
 
   .contact-section :global(.section-kicker) {
+    grid-column: 1;
     color: var(--color-muted);
   }
 
@@ -145,6 +160,20 @@ import { siteConfig } from '../config/site';
   @media (max-width: 64rem) {
     .contact-layout {
       grid-template-columns: 1fr;
+    }
+
+    .contact-heading,
+    .contact-details {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .contact-heading {
+      margin-top: 3rem;
+    }
+
+    .document-links {
+      margin-top: 0;
     }
   }
 
