@@ -203,12 +203,31 @@ footer {
 .footer-inner {
   display: grid;
   min-height: 6rem;
+  padding-block: 1.5rem;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1rem;
   color: var(--color-muted);
   font-size: 0.78rem;
   letter-spacing: 0;
+}
+
+.footer-company {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.footer-company strong {
+  color: var(--color-paper);
+}
+
+.footer-company a {
+  width: fit-content;
+}
+
+.footer-copyright {
+  justify-self: end;
+  text-align: right;
 }
 
 .linkedin-link {
@@ -242,6 +261,14 @@ footer {
 }
 
 @media (max-width: 40rem) {
+  .footer-inner {
+    grid-template-columns: auto 1fr;
+  }
+
+  .footer-company {
+    grid-column: 1 / -1;
+  }
+
   .site-shell {
     width: min(100% - 2rem, 72rem);
   }

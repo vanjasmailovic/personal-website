@@ -6,7 +6,12 @@ const year = new Date().getFullYear();
 
 <footer>
   <div class="site-shell footer-inner">
-    <span>Vanja Smailovic © {year}</span>
+    <div class="footer-company">
+      <strong>Vanja Solutions AB</strong>
+      <span>Tumba, Greater Stockholm Area</span>
+      <span>Org.nr. 559585-8415</span>
+      <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+    </div>
     <a
       class="linkedin-link"
       href={siteConfig.linkedIn}
@@ -21,5 +26,6 @@ const year = new Date().getFullYear();
         ></path>
       </svg>
     </a>
+    <span class="footer-copyright">Vanja Smailovic © {year}</span>
   </div>
 </footer>
