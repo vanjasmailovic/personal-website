@@ -147,7 +147,7 @@ const experience = [
   .experience-list > li {
     display: grid;
     min-height: 8.5rem;
-    grid-template-columns: minmax(9rem, 0.7fr) minmax(15rem, 1.3fr) auto;
+    grid-template-columns: minmax(9rem, 0.7fr) minmax(15rem, 1.3fr) 7rem;
     align-items: center;
     gap: clamp(1rem, 3vw, 2.5rem);
     padding-block: 1.25rem;
@@ -258,6 +258,7 @@ const experience = [
 
   time {
     white-space: nowrap;
+    justify-self: end;
   }
 
   @media (max-width: 48rem) {
@@ -277,6 +278,7 @@ const experience = [
 
     .experience-list > li > time {
       grid-column: 2;
+      justify-self: start;
     }
   }
 
